@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1000 Days of Fire Countdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a, #3a0a00);
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+    .fire-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="3" fill="rgba(255,69,0,0.2)"/></svg>') repeat;
+      animation: flicker 10s linear infinite;
+      opacity: 0.3;
+      z-index: -1;
+    }
+    @keyframes flicker {
+      0% { background-position: 0 0; }
+      100% { background-position: 500px 500px; }
+    }
+    .countdown-box {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #ff4500;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); }
+      to { box-shadow: 0 0 30px rgba(255, 69, 0, 0.8); }
+    }
+    .digit {
+      text-shadow: 0 0 10px #ff4500, 0 0 20px #ff4500;
+      transition: transform 0.3s ease;
+    }
+    .digit:hover {
+      transform: scale(1.1);
+    }
+    .btn-fire {
+      background: linear-gradient(45deg, #ff4500, #ff8c00);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-fire::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+    .btn-fire:hover::before {
+      left: 100%;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .animate-bounce-in {
+      animation: bounceIn 1s ease-out;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+  <div class="fire-overlay"></div>
+  <div class="countdown-box rounded-2xl p-10 text-center max-w-4xl mx-4 animate-bounce-in">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">1000 Days of Fire</h1>
+    <p class="text-xl md:text-2xl mb-8 text-orange-200">Health, Fitness and Content-creation</p>
+    <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="flex flex-col items-center">
+        <span id="days" class="digit text-5xl md:text-7xl font-bold">0</span>
+        <p class="text-lg md:text-xl mt-2">Days</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="hours" class="digit text-5xl md:text-7xl font-bold">0</span>
+        <p class="text-lg md:text-xl mt-2">Hours</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="minutes" class="digit text-5xl md:text-7xl font-bold">0</span>
+        <p class="text-lg md:text-xl mt-2">Minutes</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="seconds" class="digit text-5xl md:text-7xl font-bold">0</span>
+        <p class="text-lg md:text-xl mt-2">Seconds</p>
+      </div>
+    </div>
+    <p class="mt-8 text-lg md:text-xl text-orange-300">Until April 15, 2028</p>
+    <button id="motivateBtn" class="btn-fire mt-10 px-8 py-4 rounded-full text-lg font-semibold text-white shadow-lg hover:shadow-xl transition duration-300">
+      Ignite Your Journey!
+    </button>
+  </div>
+
+  <script>
+    const targetDate = new Date('April 15, 2028 00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<p class="text-3xl md:text-4xl font-bold text-orange-200">The Fire Has Ignited!</p>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const quotes = [
+      "Unleash the fire within and conquer your goals!",
+      "Every sweat, every post, every moment builds your legacy!",
+      "Burn through obstacles, create with passion!",
+      "Your journey to greatness starts with a single spark!"
+    ];
+
+    document.getElementById('motivateBtn').addEventListener('click', () => {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      alert(randomQuote);
+    });
+  </script>
+</body>
+</html>
