@@ -438,54 +438,6 @@
             transform: translateY(-2px) scale(1.02);
         }
 
-        /* Enhanced Quote Popup */
-        .quote-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .quote-popup.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .quote-text {
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            color: #fff;
-            margin-bottom: 30px;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-
-        .quote-close {
-            background: linear-gradient(45deg, var(--fire-orange), var(--fire-gold));
-            border: none;
-            border-radius: 30px;
-            padding: 15px 30px;
-            color: #000;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .quote-close:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
-        }
-
         /* Stats Section */
         .stats-grid {
             display: grid;
@@ -584,7 +536,7 @@
         <section class="glass-card vision-section">
             <h2 class="text-3xl font-bold text-[#ffd700] mb-6">🎯 The Mission</h2>
             <p class="vision-text">
-                To inspire millions through discipline, fitness, and storytelling while becoming a leader who embodies resilience and unstoppable impact. By April 15, 2028, achieve a sculpted 6-pack physique, secure a ₹50+ LPA career, and build a global brand with 100K+ YouTube subscribers, 25K+ podcast listeners, and a published "1000 Days of Fire" transformation story that changes lives.
+                To inspire millions through discipline, fitness, and storytelling while becoming a leader who embodies resilience and unstoppable impact. By April 15, 2028, achieve a sculpted 6-pack physique, secure a ₹50+ LPA career, and build a personal brand with 100K+ YouTube subscribers.
             </p>
             <div class="stats-grid">
                 <div class="stat-card">
@@ -619,12 +571,11 @@
                 </div>
                 <div class="phase-goals">
                     <ul>
-                        <li>Transform from 103+ kg to ≤80 kg through disciplined nutrition</li>
-                        <li>Maintain 12,000+ daily steps & 5+ intense gym sessions weekly</li>
-                        <li>Crush CAT exam with strategic preparation and confidence</li>
-                        <li>Build unbreakable routines: daily journaling, meditation, 5:30 AM wake-ups</li>
-                        <li>Document transformation journey with weekly progress photos</li>
-                        <li>Develop mental toughness through cold showers and challenging workouts</li>
+                        <li>Become Time management Guru using prodictivity system - Google calendar </li>
+                        <li>Maintain Morning 2 Hours improve your healthy time blocking system</li>
+                        <li>Crush CAT exam with strategic preparation and confidence - Target: 99.5+ PR</li>
+                        <li>Get controll over your taste buds- say away from refined sugar, maida and unhealthy plam oil & avoid over-eating</li>
+                        <li>Learn about personal branding and content creation</li>
                     </ul>
                 </div>
             </div>
@@ -632,17 +583,15 @@
             <div class="glass-card phase-card" onclick="togglePhase(this)">
                 <h3 class="phase-title">Phase 2: Momentum 🚀</h3>
                 <div class="phase-meta">
-                    <span class="phase-dates">📅 Jan – May 2026</span>
+                    <span class="phase-dates">📅 Jan 01 – May 2026</span>
                     <span class="phase-theme">🎯 Visibility & Growth</span>
                 </div>
                 <div class="phase-goals">
                     <ul>
                         <li>Achieve 75 kg with visible muscle definition and strength</li>
-                        <li>Launch YouTube channel with weekly transformation content</li>
-                        <li>Start podcast featuring success stories and mindset episodes</li>
-                        <li>Build engaged community of 1,000+ followers across platforms</li>
+                        <li>Strict Diet with balanced nutritions and with zero cheat meal</li>
+                        <li>Start content creation: podcast featuring success stories, Time-management and mindset episodes</li>
                         <li>Excel in IIM-Ahmedabad interviews with compelling story</li>
-                        <li>Establish personal brand as transformation expert</li>
                     </ul>
                 </div>
             </div>
@@ -650,21 +599,20 @@
             <div class="glass-card phase-card" onclick="togglePhase(this)">
                 <h3 class="phase-title">Phase 3: Integration ⚡</h3>
                 <div class="phase-meta">
-                    <span class="phase-dates">📅 Jun – Dec 2026</span>
+                    <span class="phase-dates">📅 Jun – Dec 31, 2026</span>
                     <span class="phase-theme">🎯 Excellence & Expansion</span>
                 </div>
                 <div class="phase-goals">
                     <ul>
                         <li>Dominate at IIM Ahmedabad while maintaining ≤78 kg physique</li>
                         <li>Produce weekly IIM vlogs showcasing academic excellence</li>
-                        <li>Launch bi-weekly podcast with industry leaders and alumni</li>
-                        <li>Secure prestigious consulting or product management internship</li>
-                        <li>Begin writing "1000 Days of Fire" transformation script</li>
                         <li>Build network of 5,000+ professional connections</li>
+                        <li>Launch podcasts with industry leaders and alumni</li>
+                        <li>Reach 10,000+ YouTube subscribers with 50K+ views on breakthrough video</li>
                     </ul>
                 </div>
             </div>
-
+            
             <div class="glass-card phase-card" onclick="togglePhase(this)">
                 <h3 class="phase-title">Phase 4: Acceleration 💫</h3>
                 <div class="phase-meta">
@@ -675,10 +623,8 @@
                     <ul>
                         <li>Achieve 12% body fat with defined 4-pack abs</li>
                         <li>Master public speaking through TEDx or major conferences</li>
-                        <li>Launch weekly newsletter with 2,000+ engaged subscribers</li>
-                        <li>Reach 5,000+ YouTube subscribers with 50K+ views on breakthrough video</li>
-                        <li>Complete first draft of "1000 Days of Fire" book</li>
-                        <li>Generate first ₹1 lakh from content and speaking engagements</li>
+                        <li>Launch weekly newsletter with 2,000+ engaged subscribers    </li>
+                        <li>Secure prestigious consulting or product management internship</li>
                     </ul>
                 </div>
             </div>
@@ -686,88 +632,21 @@
             <div class="glass-card phase-card" onclick="togglePhase(this)">
                 <h3 class="phase-title">Phase 5: Legacy 👑</h3>
                 <div class="phase-meta">
-                    <span class="phase-dates">📅 Jun 2027 – Apr 15, 2028</span>
+                    <span class="phase-dates">📅 Jun 2027 – Apr 16, 2028</span>
                     <span class="phase-theme">🎯 Ultimate Transformation</span>
                 </div>
                 <div class="phase-goals">
                     <ul>
                         <li>Achieve sculpted 6-pack abs with sub-10% body fat</li>
                         <li>Secure dream job with ₹50+ LPA compensation package</li>
-                        <li>Publish "1000 Days of Fire" as book and documentary series</li>
-                        <li>Reach 100K YouTube subscribers and 25K podcast listeners</li>
-                        <li>Inspire 1 million+ people through transformation story</li>
+                        <li>Reach 100K YouTube subscribers</li>
                         <li>Establish foundation for lifelong impact and influence</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- <section class="glass-card" style="padding: 30px; margin-bottom: 50px;">
-            <h2 class="text-3xl font-bold text-[#ffd700] text-center mb-8">📊 Progress Tracker</h2>
-            <div class="progress-item">
-                <div class="progress-header">
-                    <span class="progress-label">💪 Weight Transformation (103 kg → 75 kg)</span>
-                    <span class="progress-percentage">3.6%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 3.6%"></div></div>
-            </div>
-            <div class="progress-item">
-                <div class="progress-header">
-                    <span class="progress-label">🎥 YouTube Subscribers (Goal: 100K)</span>
-                    <span class="progress-percentage">0%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
-            </div>
-            <div class="progress-item">
-                <div class="progress-header">
-                    <span class="progress-label">🎧 Podcast Listeners (Goal: 25K)</span>
-                    <span class="progress-percentage">0%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
-            </div>
-            <div class="progress-item">
-                <div class="progress-header">
-                    <span class="progress-label">💼 LinkedIn Network (Goal: 10K)</span>
-                    <span class="progress-percentage">0%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
-            </div>
-            <div class="progress-item">
-                <div class="progress-header">
-                    <span class="progress-label">📚 Mission Completion</span>
-                    <span class="progress-percentage">0.1%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 0.1%"></div></div>
-            </div>
-        </section> -->
-
-        <!-- <section class="glass-card cta-section" style="padding: 40px; text-align: center;">
-            <h2 class="text-3xl font-bold text-[#ffd700] mb-6">🔥 Join the Fire Movement</h2>
-            <p class="text-lg mb-8 text-gray-200">Be part of an extraordinary transformation. Watch the journey unfold, get inspired, and ignite your own fire.</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="https://www.youtube.com" target="_blank" class="btn-fire">🎥 Follow YouTube</a>
-                <a href="https://www.linkedin.com" target="_blank" class="btn-fire">💼 LinkedIn Connect</a>
-                <button class="btn-fire" onclick="showQuote()">⚡ Get Motivated</button>
-                <button class="btn-fire" onclick="showProgress()">📈 View Progress</button>
-            </div>
-            <div class="text-center">
-                <p class="text-sm text-gray-400 mb-4">🔔 Never miss an update from the 1000 Days journey</p>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <span class="px-3 py-1 bg-orange-500 bg-opacity-20 rounded-full text-sm text-orange-300">#1000DaysOfFire</span>
-                    <span class="px-3 py-1 bg-orange-500 bg-opacity-20 rounded-full text-sm text-orange-300">#TransformationJourney</span>
-                    <span class="px-3 py-1 bg-orange-500 bg-opacity-20 rounded-full text-sm text-orange-300">#LegacyBuilding</span>
-                </div>
-            </div>
-        </section> -->
-
-        <div class="popup-overlay" id="popupOverlay" onclick="hideQuote()"></div>
-        <div class="quote-popup" id="quotePopup">
-            <div class="mb-4">
-                <span style="font-size: 3rem;">🔥</span>
-            </div>
-            <p class="quote-text" id="quoteText"></p>
-            <button class="quote-close" onclick="hideQuote()">Close</button>
-        </div>
+       
     </div>
 
     <script>
@@ -785,7 +664,7 @@
         }
 
         // Enhanced Countdown Timer
-        const targetDate = new Date('April 15, 2028 00:00:00').getTime();
+        const targetDate = new Date('April 16, 2028 00:00:00').getTime();
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -844,109 +723,6 @@
             }
         }
 
-        // Enhanced Motivational Quotes with categories
-        const quotes = [
-            {
-                text: "🔥 Every rep, every step, every choice is forging your legacy. The fire within you burns brighter than any obstacle!",
-                category: "motivation"
-            },
-            {
-                text: "💪 From 103kg to 6-pack abs - your transformation story will inspire millions. The world is waiting for your fire!",
-                category: "transformation"
-            },
-            {
-                text: "🚀 1000 Days of relentless pursuit. 1000 Days of becoming unstoppable. Your empire starts NOW!",
-                category: "persistence"
-            },
-            {
-                text: "⚡ Discipline is choosing between what you want now and what you want most. Choose your legacy!",
-                category: "discipline"
-            },
-            {
-                text: "🎯 The man who moves mountains begins by carrying away small stones. Your journey starts with today's workout!",
-                category: "progress"
-            },
-            {
-                text: "👑 Kings are not born in comfort zones. Step into the fire and emerge as the leader you're meant to be!",
-                category: "leadership"
-            },
-            {
-                text: "🌟 Your story of transformation will light the way for others lost in darkness. Be the beacon of hope!",
-                category: "impact"
-            }
-        ];
-
-        function showQuote() {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            const quoteText = document.getElementById('quoteText');
-            quoteText.innerHTML = randomQuote.text;
-            
-            document.getElementById('popupOverlay').classList.add('show');
-            document.getElementById('quotePopup').classList.add('show');
-            
-            // Add typing effect
-            const text = randomQuote.text;
-            quoteText.innerHTML = '';
-            let i = 0;
-            const typeWriter = setInterval(() => {
-                quoteText.innerHTML += text.charAt(i);
-                i++;
-                if (i > text.length) {
-                    clearInterval(typeWriter);
-                }
-            }, 30);
-        }
-
-        function hideQuote() {
-            document.getElementById('popupOverlay').classList.remove('show');
-            document.getElementById('quotePopup').classList.remove('show');
-        }
-
-        // Progress animation function
-        function showProgress() {
-            // Animate all progress bars
-            const progressBars = document.querySelectorAll('.progress-fill');
-            progressBars.forEach((bar, index) => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, index * 200);
-            });
-
-            // Show success message
-            setTimeout(() => {
-                alert('🔥 Progress tracked! Keep the fire burning! Every day counts towards your 1000-day legacy!');
-            }, 1000);
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                hideQuote();
-            }
-            if (e.key === 'm' || e.key === 'M') {
-                showQuote();
-            }
-        });
-
-        // Auto-update weight progress (example - replace with real data)
-        function updateWeightProgress() {
-            // This would typically fetch real data from a server
-            const currentWeight = 102; // Example current weight
-            const startWeight = 103;
-            const targetWeight = 75;
-            const progress = ((startWeight - currentWeight) / (startWeight - targetWeight)) * 100;
-            
-            const weightProgress = document.querySelector('.progress-item:first-child .progress-fill');
-            const weightPercentage = document.querySelector('.progress-item:first-child .progress-percentage');
-            
-            if (weightProgress && weightPercentage) {
-                weightProgress.style.width = Math.max(0, progress).toFixed(1) + '%';
-                weightPercentage.textContent = Math.max(0, progress).toFixed(1) + '%';
-            }
-        }
-
         // Enhanced initialization
         function initializeApp() {
             createParticles();
@@ -969,16 +745,10 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
-
-            // Welcome message
-            setTimeout(() => {
-                console.log('🔥 Welcome to 1000 Days of Fire! Press "M" for motivation, "Esc" to close popups. Let\'s build your legacy!');
-            }, 1000);
         }
 
         // Start the application
         setInterval(updateCountdown, 1000);
-        setInterval(updateWeightProgress, 60000); // Update weight every minute (for demo)
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', initializeApp);
