@@ -20,6 +20,8 @@
             --fire-red: #dc2626;
             --dark-bg: #0a0a0a;
             --glass-bg: rgba(0, 0, 0, 0.85);
+            --digital-green: #00ff9f;
+            --digital-blue: #00b7eb;
         }
 
         body {
@@ -158,7 +160,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215undle, 0, 0.5), transparent);
         }
 
         .glass-card:hover {
@@ -184,23 +186,29 @@
             font-weight: 400;
         }
 
-        /* Enhanced Countdown */
+        /* Enhanced Digital Countdown */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 25px;
             margin-bottom: 50px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--digital-green);
+            box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
         }
 
         .time-unit {
-            background: linear-gradient(145deg, rgba(255, 69, 0, 0.15), rgba(255, 140, 0, 0.1));
-            border-radius: 25px;
-            padding: 30px 20px;
+            background: linear-gradient(145deg, rgba(0, 255, 159, 0.1), rgba(0, 183, 235, 0.1));
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--digital-blue);
         }
 
         .time-unit::before {
@@ -210,7 +218,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 159, 0.2), transparent);
             transition: left 0.5s ease;
         }
 
@@ -220,23 +228,27 @@
 
         .time-unit:hover {
             transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.4);
-            border: 2px solid rgba(255, 215, 0, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 255, 159, 0.3);
+            border: 2px solid var(--digital-green);
         }
 
         .time-number {
             font-family: 'Orbitron', monospace;
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+            color: var(--digital-green);
+            text-shadow: 0 0 15px rgba(0, 255, 159, 0.8);
             display: block;
             margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--digital-green), var(--digital-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .time-label {
             font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--fire-gold);
+            color: var(--digital-blue);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -332,6 +344,79 @@
 
         .phase-goals li::before {
             content: '🔥';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Rules Section */
+        .rules-section {
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .rule-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .rule-card:hover::before {
+            left: 100%;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .rule-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: var(--fire-gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .rule-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .rule-list li::before {
+            content: '🚀';
             position: absolute;
             left: 0;
             top: 0;
@@ -479,6 +564,10 @@
                 text-align: center;
                 width: 100%;
             }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Background overlay for popup */
@@ -512,7 +601,7 @@
         </header>
 
         <section class="glass-card" style="padding: 30px; margin-bottom: 50px;">
-            <h2 class="text-3xl font-bold text-[#ffd700] text-center mb-6">⏰ Time Until Legacy</h2>
+            <h2 class="text-3xl font-bold text-[#ffd700] text-center mb-6">🪐 Mission Countdown</h2>
             <div class="countdown-grid">
                 <div class="time-unit">
                     <span class="time-number" id="days">0</span>
@@ -558,7 +647,30 @@
             </div>
         </section>
 
-        
+        <section class="glass-card rules-section">
+            <h2 class="text-3xl font-bold text-[#ffd700] text-center mb-8">📜 Mission Protocols</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3 class="rule-title">Daily Protocols</h3>
+                    <ul class="rule-list">
+                        <li>Complete 12000+ steps on fitness tracker</li>
+                        <li>Follow strict no-sugar, no-maida, no-unhealthy oil diet</li>
+                        <li>Follow nofap - no masturbation: 1000 days streaks</li>
+                        <li>Sit quite 30 minutes everyday with your own self</li>  
+                        <li>Read 10+ pages of non-fiction book</li>
+                    </ul>
+                </div>
+                <div class="rule-card">
+                    <h3 class="rule-title">Weekly Protocols</h3>
+                    <ul class="rule-list">
+                        <li>Complete 5 gym sessions targeting strength and hypertrophy</li>
+                        <li>Follow water fast for once in a week</li>
+                        <li>Review and adjust Google Calendar for next week's time blocks</li>
+                        <li>Conduct a 1-hour personal brand strategy session</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section class="phases-section">
             <h2 class="text-3xl font-bold text-[#ffd700] text-center mb-8">🚀 Mission Phases</h2>
@@ -571,10 +683,10 @@
                 </div>
                 <div class="phase-goals">
                     <ul>
-                        <li>Become Time management Guru using prodictivity system - Google calendar </li>
+                        <li>Become Time management Guru using productivity system - Google calendar</li>
                         <li>Maintain Morning 2 Hours improve your healthy time blocking system</li>
                         <li>Crush CAT exam with strategic preparation and confidence - Target: 99.5+ PR</li>
-                        <li>Get controll over your taste buds- say away from refined sugar, maida and unhealthy plam oil & avoid over-eating</li>
+                        <li>Get control over your taste buds - stay away from refined sugar, maida and unhealthy palm oil & avoid over-eating</li>
                         <li>Learn about personal branding and content creation</li>
                     </ul>
                 </div>
@@ -589,7 +701,7 @@
                 <div class="phase-goals">
                     <ul>
                         <li>Achieve 75 kg with visible muscle definition and strength</li>
-                        <li>Strict Diet with balanced nutritions and with zero cheat meal</li>
+                        <li>Strict Diet with balanced nutrition and with zero cheat meal</li>
                         <li>Start content creation: podcast featuring success stories, Time-management and mindset episodes</li>
                         <li>Excel in IIM-Ahmedabad interviews with compelling story</li>
                     </ul>
@@ -623,7 +735,7 @@
                     <ul>
                         <li>Achieve 12% body fat with defined 4-pack abs</li>
                         <li>Master public speaking through TEDx or major conferences</li>
-                        <li>Launch weekly newsletter with 2,000+ engaged subscribers    </li>
+                        <li>Launch weekly newsletter with 2,000+ engaged subscribers</li>
                         <li>Secure prestigious consulting or product management internship</li>
                     </ul>
                 </div>
@@ -645,8 +757,6 @@
                 </div>
             </div>
         </section>
-
-       
     </div>
 
     <script>
@@ -671,7 +781,7 @@
 
             if (distance < 0) {
                 document.querySelector('.countdown-grid').innerHTML = 
-                    '<div class="col-span-full text-center"><p class="text-4xl font-bold text-[#ffd700]">🎉 The Legacy is Complete! 🎉</p></div>';
+                    '<div class="col-span-full text-center"><p class="text-4xl font-bold text-[#00ff9f]">🚀 Mission Accomplished! Legacy Complete! 🚀</p></div>';
                 return;
             }
 
@@ -727,7 +837,6 @@
         function initializeApp() {
             createParticles();
             updateCountdown();
-            updateWeightProgress();
             
             // Add scroll animations
             const observer = new IntersectionObserver((entries) => {
@@ -767,7 +876,6 @@
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) {
                 updateCountdown();
-                updateWeightProgress();
             }
         });
     </script>
