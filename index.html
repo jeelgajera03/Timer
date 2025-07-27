@@ -298,7 +298,7 @@
             // Define your phases here with custom durations
             const phaseDetails = [
                 {
-                    days: 30,
+                    days:30,
                     rules: [
                         '15000+ steps everyday at any HOW !!',
                         'Controll on how much you eat !!! ',
@@ -371,7 +371,7 @@
             const completedContainer = document.getElementById('completed-phase-container');
             const phaseContainer = document.getElementById('phase-container');
             const phaseArray = generatePhaseArray();
-            const currentDate = new Date('2025-07-26T21:32:00+05:30'); // Current date: July 26, 2025, 9:32 PM IST
+            const currentDate = new Date(); // Use real current date
 
             // Separate completed and active/upcoming phases
             const completedPhases = [];
@@ -388,9 +388,8 @@
                 } else {
                     if (phaseStart <= now && phaseEnd >= now) {
                         activePhase = { ...phase, index };
-                    } else {
-                        activeUpcomingPhases.push({ ...phase, index });
                     }
+                    activeUpcomingPhases.push({ ...phase, index });
                 }
             });
 
@@ -402,22 +401,24 @@
             // Render completed phases
             completedContainer.innerHTML = '';
             completedPhases.forEach(phase => {
-                const phaseCard = createPhaseCard(phase, phase.index, currentDate);
+                const phaseCard = createPhaseCard(phase, phase.index, currentDate, false);
                 completedContainer.appendChild(phaseCard);
             });
 
             // Render active and upcoming phases
             phaseContainer.innerHTML = '';
-            sortedPhases.forEach(phase => {
-                const phaseCard = createPhaseCard(phase, phase.index, currentDate);
+            sortedPhases.forEach((phase, idx) => {
+                // Expand details and show countdown for the active phase
+                const isActive = (activePhase && phase.index === activePhase.index);
+                const phaseCard = createPhaseCard(phase, phase.index, currentDate, isActive);
                 phaseContainer.appendChild(phaseCard);
             });
         }
 
         // Create phase card
-        function createPhaseCard(phase, index, currentDate) {
+        function createPhaseCard(phase, index, currentDate, isActive = false) {
             const phaseCard = document.createElement('div');
-            phaseCard.className = `phase-card ${phase.startDate <= currentDate.toISOString().split('T')[0] && phase.endDate >= currentDate.toISOString().split('T')[0] ? 'active' : ''}`;
+            phaseCard.className = `phase-card ${isActive ? 'active' : ''}`;
             phaseCard.id = `phase-${index}`;
 
             // Determine phase status
@@ -434,8 +435,8 @@
                             Phase Conquered! 🔥 Ready for the Next Challenge
                         </div>
                     `;
-                } else if (phaseStart <= now) {
-                    // Active phase, show countdown
+                } else if (phaseStart <= now && phaseEnd >= now) {
+                    // Active phase, always show countdown
                     statusHTML = `
                         <div class="phase-countdown-grid">
                             <div class="phase-time-unit">
@@ -456,9 +457,6 @@
                             </div>
                         </div>
                     `;
-                } else {
-                    // Not started, no countdown
-                    statusHTML = '';
                 }
             }
 
@@ -468,8 +466,8 @@
                     <span class="phase-dates">${phase.days} days (${phase.startDate} to ${phase.endDate})</span>
                 </div>
                 ${statusHTML}
-                <button class="toggle-button" onclick="toggleDetails(${index})">Show Details</button>
-                <div class="phase-details" id="details-${index}">
+                <button class="toggle-button" onclick="toggleDetails(${index})">${isActive ? 'Hide Details' : 'Show Details'}</button>
+                <div class="phase-details${isActive ? ' active' : ''}" id="details-${index}">
                     <div class="phase-section">
                         <h4>Rules</h4>
                         <ul>
