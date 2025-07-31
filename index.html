@@ -1,692 +1,343 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1000 Days of Fire - Transform Your Legacy</title>
+    <title>Map My Franchise - AI-Powered Franchise Management Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
-
-        :root {
-            --fire-orange: #ff4500;
-            --fire-gold: #ffd700;
-            --dark-bg: #0a0a0a;
-            --glass-bg: rgba(0, 0, 0, 0.85);
-            --digital-green: #00ff9f;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0f0f 50%, #0a0a0a 100%);
-            min-height: 100vh;
+        body { 
             font-family: 'Inter', sans-serif;
-            color: #fff;
+            background-color: #050816;
+            color: #E6E6FA; /* Lavender white */
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .main-title {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            background: linear-gradient(45deg, #ff4500, #ffd700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--fire-gold);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            background: rgba(23, 26, 45, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
+        .hero-gradient-text {
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s ease-in-out;
         }
-
-        .countdown-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--digital-green);
+        .feature-tab.active {
+            background-color: #4f46e5;
+            color: white;
         }
-
-        .time-number {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            color: var(--digital-green);
-        }
-
-        .time-label {
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            color: #00b7eb;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .phase-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
-        }
-
-        .phase-card.active {
-            border: 2px solid var(--fire-gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .phase-title {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--fire-gold);
-            margin-bottom: 10px;
-        }
-
-        .phase-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .phase-dates, .phase-theme {
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            color: #ff8c00;
-            padding: 5px 10px;
-            background: rgba(255, 140, 0, 0.1);
-            border-radius: 15px;
-        }
-
-        .phase-section {
-            margin-bottom: 15px;
-        }
-
-        .phase-section h4 {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--fire-gold);
-            margin-bottom: 10px;
-        }
-
-        .phase-section ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-
-        .phase-section li {
-            position: relative;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
-        }
-
-        .phase-section li::before {
-            content: '🔥';
-            position: absolute;
-            left: -20px;
-        }
-
-        .phase-countdown-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid var(--digital-green);
-            margin-bottom: 15px;
-        }
-
-        .time-unit,
-        .phase-time-unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phase-time-number {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 700;
-            color: var(--digital-green);
-        }
-
-        .phase-time-label {
-            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-            color: #00b7eb;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .phase-completed {
-            text-align: center;
-            padding: 15px;
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            font-weight: 700;
-            color: var(--fire-gold);
-            background: rgba(255, 69, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-        }
-
-        .toggle-button {
-            background: var(--fire-orange);
-            color: #fff;
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(0.9rem, 1.8vw, 1rem);
-            padding: 8px 16px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .toggle-button:hover {
-            background: var(--fire-gold);
-            color: #000;
-        }
-
-        .phase-details {
+        .feature-content {
             display: none;
-            margin-top: 15px;
         }
-
-        .phase-details.active {
+        .feature-content.active {
             display: block;
         }
-
-        .completed-section h2 {
-            color: var(--fire-gold);
-            border-bottom: 2px solid rgba(255, 69, 0, 0.3);
-            padding-bottom: 10px;
+        .pulse-button {
+            box-shadow: 0 0 0 0 rgba(96, 165, 250, 1);
+            animation: pulse 2s infinite;
         }
-
-        @media (max-width: 768px) {
-            .phase-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .phase-dates, .phase-theme {
-                width: 100%;
-                text-align: center;
-            }
-            .phase-countdown-grid {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header class="text-center mb-10">
-            <h1 class="main-title">1000 Days of Fire</h1>
-            <p class="subtitle">🔥 Transform Your Body • Elevate Your Mind • Build Your Legacy 🔥</p>
-        </header>
+<body class="overflow-x-hidden">
 
-        <section class="glass-card">
-            <h2 class="text-2xl font-bold text-[#ffd700] text-center mb-6">🪐 Mission Countdown</h2>
-            <div class="countdown-grid">
-                <div class="time-unit">
-                    <span class="time-number" id="days">0</span>
-                    <span class="time-label">Days</span>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/50 backdrop-blur-lg border-b border-slate-700">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-bold text-white">MapMyFranchise</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="font-medium text-slate-300 hover:text-white transition-colors">Features</a>
+                    <a href="#roi" class="font-medium text-slate-300 hover:text-white transition-colors">ROI</a>
+                    <a href="#pricing" class="font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="hidden sm:inline-block text-sm font-semibold text-slate-300 hover:text-white">Login</a>
+                    <a href="#" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors shadow-lg pulse-button">Request a Demo</a>
                 </div>
-                <div class="time-unit">
-                    <span class="time-number" id="hours">0</span>
-                    <span class="time-label">Hours</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative pt-24 pb-32 overflow-hidden">
+             <div class="absolute inset-0 bg-gradient-to-b from-[#050816] to-[#111827] z-0"></div>
+             <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 z-0"></div>
+            <div class="container mx-auto px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight">
+                    Your Franchise Command Center, <br class="hidden md:block"/> Powered by 
+                    <span class="hero-gradient-text" id="hero-animated-text">AI Insights</span>
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">
+                    Unify your operations, supercharge growth, and gain total network visibility. MapMyFranchise is the all-in-one platform built for ambitious franchise leaders.
+                </p>
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 shadow-xl transform hover:scale-105 transition-transform duration-300">Get a Free Demo</a>
+                    <a href="#" class="bg-slate-700/50 text-slate-200 px-8 py-3 rounded-lg font-semibold hover:bg-slate-600/50 border border-slate-600 transition-colors">Watch 2-Min Tour</a>
                 </div>
-                <div class="time-unit">
-                    <span class="time-number" id="minutes">0</span>
-                    <span class="time-label">Minutes</span>
+                <div class="mt-16">
+                    <div class="glass-card p-2 inline-block">
+                        <img src="./images/dashboard.png" alt="Map My Franchise Dashboard" class="rounded-xl shadow-2xl mx-auto">
+                    </div>
                 </div>
-                <div class="time-unit">
-                    <span class="time-number" id="seconds">0</span>
-                    <span class="time-label">Seconds</span>
+            </div>
+        </section>
+        
+        <!-- Trusted By Section -->
+        <section class="py-12 bg-[#111827]">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h3 class="text-center text-sm font-bold text-slate-500 uppercase tracking-widest">Trusted By Leading Franchise Networks</h3>
+                <div class="mt-8 flex justify-center items-center gap-x-8 md:gap-x-16 flex-wrap">
+                    <span class="text-slate-500 font-bold text-lg opacity-70">Burger Palace</span>
+                    <span class="text-slate-500 font-bold text-lg opacity-70">Coffee House Co.</span>
+                    <span class="text-slate-500 font-bold text-lg opacity-70">Fresh Salads Inc.</span>
+                    <span class="text-slate-500 font-bold text-lg opacity-70">Pizza Corp</span>
                 </div>
             </div>
         </section>
 
-        <section class="glass-card">
-            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">📅 Active & Upcoming Phases</h2>
-            <div id="phase-container"></div>
+        <!-- Features Section with Tabs -->
+        <section id="features" class="py-24 bg-gradient-to-b from-[#111827] to-[#050816]">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl font-extrabold text-white">One Platform. Infinite Possibilities.</h2>
+                    <p class="mt-4 text-lg text-slate-400">From a bird's-eye view to ground-level details, control every aspect of your franchise empire.</p>
+                </div>
+
+                <div class="mt-12 max-w-5xl mx-auto">
+                    <div id="feature-tabs" class="grid grid-cols-2 md:grid-cols-4 gap-2 glass-card p-2 mb-8">
+                        <button class="feature-tab active px-3 py-3 rounded-lg font-semibold transition-colors" data-tab="dashboard">Dashboard</button>
+                        <button class="feature-tab px-3 py-3 rounded-lg font-semibold transition-colors" data-tab="ai-scout">AI Location Scout</button>
+                        <button class="feature-tab px-3 py-3 rounded-lg font-semibold transition-colors" data-tab="crm">Integrated CRM</button>
+                        <button class="feature-tab px-3 py-3 rounded-lg font-semibold transition-colors" data-tab="supply-chain">Supply Chain</button>
+                    </div>
+
+                    <div id="feature-content-area" class="glass-card p-8 md:p-12">
+                        <!-- Dashboard Content -->
+                        <div class="feature-content active" id="dashboard">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-4">
+                                    <h3 class="text-2xl font-bold text-white">Live Operations Dashboard</h3>
+                                    <p class="text-slate-400">Visualize your network on an interactive map. Drill down into any location to see real-time sales, compliance status, and customer feedback. Turn data into decisive action.</p>
+                                </div>
+                                <div><img src="./images/map.png" alt="Interactive Map" class="rounded-lg shadow-xl"></div>
+                            </div>
+                        </div>
+                        <!-- AI Scout Content -->
+                        <div class="feature-content" id="ai-scout">
+                           <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-4">
+                                    <h3 class="text-2xl font-bold text-white">AI-Powered Expansion</h3>
+                                    <p class="text-slate-400">Our proprietary AI analyzes thousands of data points—demographics, foot traffic, competition—to score and recommend prime locations for your next big opening.</p>
+                                </div>
+                                <div><img src="./images/supply-chain.png" alt="Supply Chain" class="rounded-lg shadow-xl"></div>
+                            </div>
+                        </div>
+                        <!-- CRM Content -->
+                        <div class="feature-content" id="crm">
+                             <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-4">
+                                    <h3 class="text-2xl font-bold text-white">Unified CRM</h3>
+                                    <p class="text-slate-400">Get a 360° view of your customers across all locations. Manage interactions, track loyalty, and empower your franchisees to build lasting relationships.</p>
+                                </div>
+                                <div><img src="./images/CRM.png" alt="CRM" class="rounded-lg shadow-xl"></div>
+                            </div>
+                        </div>
+                         <!-- Supply Chain Content -->
+                        <div class="feature-content" id="supply-chain">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-4">
+                                    <h3 class="text-2xl font-bold text-white">Supply Chain Automation</h3>
+                                    <p class="text-slate-400">Never run out of stock again. Monitor inventory levels network-wide, get predictive alerts for low stock, and streamline your entire procurement process from a single dashboard.</p>
+                                </div>
+                                <div><img src="./images/location_scout.png" alt="Supply Chain" class="rounded-lg shadow-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        
-        <section class="glass-card completed-section">
-            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🏆 Completed Phases</h2>
-            <div id="completed-phase-container"></div>
+
+        <!-- ROI Calculator Section -->
+        <section id="roi" class="py-24 bg-[#111827]">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-4xl font-extrabold text-white">See Your Potential Return</h2>
+                        <p class="text-lg text-slate-400">Our platform isn't a cost, it's an investment in efficiency and growth. Use our interactive calculator to estimate the value MapMyFranchise can bring to your network.</p>
+                        <div class="flex gap-8">
+                            <div>
+                                <p class="text-3xl font-bold text-blue-400" id="stat1">15%</p>
+                                <p class="text-slate-500">Avg. Sales Uplift</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold text-blue-400" id="stat2">30%</p>
+                                <p class="text-slate-500">Faster Expansion</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-8">
+                        <h3 class="text-xl font-bold text-white mb-4">Estimate Your ROI</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="franchise-count" class="block text-sm font-medium text-slate-400">Number of Franchises</label>
+                                <input type="range" id="franchise-count" min="5" max="500" value="50" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                                <div class="text-right text-white font-bold text-lg mt-1"><span id="franchise-count-label">50</span> locations</div>
+                            </div>
+                            <div>
+                                <label for="avg-revenue" class="block text-sm font-medium text-slate-400">Avg. Annual Revenue per Franchise</label>
+                                <input type="range" id="avg-revenue" min="100000" max="2000000" step="50000" value="750000" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                                <div class="text-right text-white font-bold text-lg mt-1">$<span id="avg-revenue-label">750,000</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-slate-700 text-center">
+                            <p class="text-slate-400">Estimated Annual Revenue Increase:</p>
+                            <p class="text-4xl font-bold text-green-400 mt-2" id="roi-result">$562,500</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-    </div>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-24 bg-gradient-to-b from-[#050816] to-[#111827]">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-4xl font-extrabold text-white">Simple, Transparent Pricing</h2>
+                    <p class="mt-4 text-lg text-slate-400">Choose the plan that scales with your ambition. No hidden fees.</p>
+                </div>
+                <div class="mt-16 grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+                    <!-- Starter Plan -->
+                    <div class="glass-card p-8 flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white">Starter</h3>
+                        <p class="mt-2 text-slate-400">For new and growing franchises.</p>
+                        <p class="mt-6 text-5xl font-bold text-white">$199<span class="text-xl font-medium text-slate-400">/mo</span></p>
+                        <ul class="mt-8 space-y-4 text-slate-300 flex-grow">
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Up to 10 Locations</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Dashboard & Analytics</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Compliance Tracking</span></li>
+                        </ul>
+                        <a href="#" class="mt-8 w-full text-center bg-slate-700/50 text-slate-200 px-6 py-3 rounded-lg font-semibold hover:bg-slate-600/50 border border-slate-600 transition-colors">Get Started</a>
+                    </div>
+                     <!-- Professional Plan -->
+                     <div class="glass-card p-8 flex flex-col border-2 border-blue-500 relative h-full">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 text-sm font-semibold rounded-full shadow-lg">Most Popular</div>
+                        <h3 class="text-xl font-bold text-white">Professional</h3>
+                        <p class="mt-2 text-slate-400">For established networks ready to scale.</p>
+                        <p class="mt-6 text-5xl font-bold text-white">$499<span class="text-xl font-medium text-slate-400">/mo</span></p>
+                        <ul class="mt-8 space-y-4 text-slate-300 flex-grow">
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Up to 50 Locations</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Everything in Starter, plus:</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>CRM & Supply Chain</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>AI Location Scout</span></li>
+                        </ul>
+                        <a href="#" class="mt-8 w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105">Get Started</a>
+                    </div>
+                    <!-- Enterprise Plan -->
+                    <div class="glass-card p-8 flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white">Enterprise</h3>
+                        <p class="mt-2 text-slate-400">For large-scale, custom needs.</p>
+                        <p class="mt-6 text-5xl font-bold text-white">Custom</p>
+                        <ul class="mt-8 space-y-4 text-slate-300 flex-grow">
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Unlimited Locations & Users</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Dedicated Support & Onboarding</span></li>
+                             <li class="flex items-start"><svg class="w-5 h-5 text-blue-400 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Custom Integrations & APIs</span></li>
+                        </ul>
+                        <a href="#" class="mt-8 w-full text-center bg-slate-700/50 text-slate-200 px-6 py-3 rounded-lg font-semibold hover:bg-slate-600/50 border border-slate-600 transition-colors">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#111827] border-t border-slate-800">
+             <div class="container mx-auto px-6 lg:px-8 py-16">
+                 <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-white">Ready to See the Future of Franchise Management?</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-400">Stop juggling spreadsheets and start making data-driven decisions. Let us show you how.</p>
+                    <div class="mt-8">
+                        <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 shadow-xl transform hover:scale-105 transition-transform duration-300 pulse-button">Request Your Free Demo Now</a>
+                    </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-sm text-slate-500">
+                    <p>&copy; 2024 Map My Franchise, Inc. All rights reserved.</p>
+                     <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <a href="#" class="hover:text-slate-300 transition-colors">Privacy</a>
+                        <a href="#" class="hover:text-slate-300 transition-colors">Terms</a>
+                    </div>
+                </div>
+             </div>
+        </footer>
+    </main>
 
     <script>
-        // Generate phase array
-        function generatePhaseArray() {
-            const startDate = new Date('2025-07-28');
-            const endDate = new Date('2028-04-23');
-            const totalDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)); // 1000 days
-
-            // Define your phases here with custom durations
-            const phaseDetails = [
-                // phase 1
-                {
-                    days:21,
-                    rules: [
-                        'Start your morning with 12 surya-namaskar and pranaayam everyday',
-                        '12000+ steps everyday at any HOW !!',
-                        'Controll on how much you eat !!! ',
-                        'Read min. 30 minutes - deep work session !!',
-                        'No unhealthy packet food - stay away from palm oil unhealthy snacks - No crunchex, No kurkure!!',
-                    ],
-                    outcomes: [
-                        'Develop habit of reading',
-                        'Learn to eat in limit - beware of overeating !!',
-                        'Trying to build a morning routine with suryanamaskar and pranaayam',
-                        'Learn to say NO to undealthy food !!',
-                    ]
-                },
-                // phase 2
-                {
-                    days:21,
-                    rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam and squats',
-                        '12000+ steps everyday at any HOW !!',
-                        'Controll on how much you eat !!! ',
-                        'Read min. 45 minutes - deep work session !!',
-                        'Give 1 Quant MOCK - 40 minutes',
-                    ],
-                    outcomes: [
-                        'Reach to 100 KG body weight first !!',
-                        'Develop habit of reading',
-                        'Learn to eat in limit - beware of overeating !!',
-                        'Trying to build a morning routine with suryanamaskar, pranaayam and squats',
-                    ]
-                },
-                // phase 3
-                {
-                    days: 21,
-                    rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats and situps',
-                        'Eat slowly - whatever you are eating !!',    
-                        'Read min. 60 minutes - deep work session !!',
-                        'Give 1 DILR MOCK - 40 minutes',
-                    ],
-                    outcomes: [
-                       
-                    ]
-                },
-                // phase 4
-                {
-                    days: 21,
-                    rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps and pushups',
-                        'Eat slowly - whatever you are eating !!',    
-                        'Read min. 90 minutes - deep work session !!',
-                        'Give 1 Quant / DILR MOCK - 40 minutes',
-                    ],
-                    outcomes: [
-                        
-                    ]
-                },
-                // phase 5
-                {
-                    days: 21,
-                    rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps and (30 X3) pushups',
-                        'Read min. 90 minutes - deep work session !! - work on your reading speed',
-                        'Give 1 VARC MOCK - 40 minutes',
-                    ],
-                    outcomes: [
-                        
-                    ]
-                },
-                // phase 6
-                {
-                    days: 21,
-                    rules: [
-                        'Give 1 full - MOCK everyday !! - 120 minutes',
-                    ],
-                    outcomes: [
-                        'Reach to 85 KG body weight',
-                        'CAT - 99.5+ PR',
-                    ]
-                },
-                // phase 7
-                {
-                    days: 31,
-                    rules: [
-                    ],
-                    outcomes: [
-                        'Reach to 80 KG body weight',
-                    ]
-                },
-                // phase 8
-                {
-                    days: 22,
-                    rules: [
-                        'Eat slowly - whatever you are eating !!',
-                        
-                    ],
-                    outcomes: [
-                        'Reach to 95 KG body weight',
-                        'improve reading speed, vocabulary and develop habit of reading',
-                        'introduce daily exercise in life strength + cardio',
-                        'learn to eat slowly and in limit each time whatever you are eating !!'
-                    ]
-                }
-            ];
-
-            const phases = [];
-            let currentDate = new Date(startDate);
-            let daysPlanned = 0;
-
-            // Generate planned phases with custom durations
-            phaseDetails.forEach((details, i) => {
-                const phaseStart = new Date(currentDate);
-                const phaseEnd = new Date(currentDate);
-                phaseEnd.setDate(phaseEnd.getDate() + details.days - 1);
-
-                phases.push({
-                    phase: `Phase ${i + 1}`,
-                    days: details.days,
-                    startDate: phaseStart.toISOString().split('T')[0],
-                    endDate: phaseEnd.toISOString().split('T')[0],
-                    rules: details.rules,
-                    outcomes: details.outcomes,
-                });
-
-                daysPlanned += details.days;
-                currentDate.setDate(currentDate.getDate() + details.days);
-            });
-
-            // Add remaining days as "Unplanned"
-            const remainingDays = totalDays - daysPlanned;
-            if (remainingDays > 0) {
-                phases.push({
-                    phase: 'Remaining Unplanned',
-                    days: remainingDays,
-                    startDate: currentDate.toISOString().split('T')[0],
-                    endDate: endDate.toISOString().split('T')[0],
-                    rules: [],
-                    outcomes: [],
-                });
-            }
-
-            return phases;
-        }
-
-        // Render phase cards
-        function renderPhaseCards() {
-            const completedContainer = document.getElementById('completed-phase-container');
-            const phaseContainer = document.getElementById('phase-container');
-            const phaseArray = generatePhaseArray();
-            const currentDate = new Date(); // Use real current date
-
-            // Separate completed and active/upcoming phases
-            const completedPhases = [];
-            const activeUpcomingPhases = [];
-            let activePhase = null;
-
-            phaseArray.forEach((phase, index) => {
-                const phaseStart = new Date(phase.startDate + 'T00:00:00+05:30').getTime();
-                const phaseEnd = new Date(phase.endDate + 'T23:59:59+05:30').getTime();
-                const now = currentDate.getTime();
-
-                if (phase.phase !== 'Remaining Unplanned' && phaseEnd < now) {
-                    completedPhases.push({ ...phase, index });
-                } else {
-                    if (phaseStart <= now && phaseEnd >= now) {
-                        activePhase = { ...phase, index };
-                    }
-                    activeUpcomingPhases.push({ ...phase, index });
-                }
-            });
-
-            // Sort active phase to the top
-            const sortedPhases = activePhase
-                ? [activePhase, ...activeUpcomingPhases.filter(p => p.phase !== activePhase.phase)]
-                : activeUpcomingPhases;
-
-            // Render completed phases
-            completedContainer.innerHTML = '';
-            completedPhases.forEach(phase => {
-                const phaseCard = createPhaseCard(phase, phase.index, currentDate, false);
-                completedContainer.appendChild(phaseCard);
-            });
-
-            // Render active and upcoming phases
-            phaseContainer.innerHTML = '';
-            sortedPhases.forEach((phase, idx) => {
-                // Expand details and show countdown for the active phase
-                const isActive = (activePhase && phase.index === activePhase.index);
-                const phaseCard = createPhaseCard(phase, phase.index, currentDate, isActive);
-                phaseContainer.appendChild(phaseCard);
-            });
-        }
-
-        // Create phase card
-        function createPhaseCard(phase, index, currentDate, isActive = false) {
-            const phaseCard = document.createElement('div');
-            phaseCard.className = `phase-card ${isActive ? 'active' : ''}`;
-            phaseCard.id = `phase-${index}`;
-
-            // Determine phase status
-            const phaseStart = new Date(phase.startDate + 'T00:00:00+05:30').getTime();
-            const phaseEnd = new Date(phase.endDate + 'T23:59:59+05:30').getTime();
-            const now = currentDate.getTime();
-            let statusHTML = '';
-
-            if (phase.phase !== 'Remaining Unplanned') {
-                if (phaseEnd < now) {
-                    // Completed phase
-                    statusHTML = `
-                        <div class="phase-completed">
-                            Phase Conquered! 🔥 Ready for the Next Challenge
-                        </div>
-                    `;
-                } else if (phaseStart <= now && phaseEnd >= now) {
-                    // Active phase, always show countdown
-                    statusHTML = `
-                        <div class="phase-countdown-grid">
-                            <div class="phase-time-unit">
-                                <span class="phase-time-number" id="phase-${index}-days">0</span>
-                                <span class="phase-time-label">Days</span>
-                            </div>
-                            <div class="phase-time-unit">
-                                <span class="phase-time-number" id="phase-${index}-hours">0</span>
-                                <span class="phase-time-label">Hours</span>
-                            </div>
-                            <div class="phase-time-unit">
-                                <span class="phase-time-number" id="phase-${index}-minutes">0</span>
-                                <span class="phase-time-label">Minutes</span>
-                            </div>
-                            <div class="phase-time-unit">
-                                <span class="phase-time-number" id="phase-${index}-seconds">0</span>
-                                <span class="phase-time-label">Seconds</span>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            phaseCard.innerHTML = `
-                <h3 class="phase-title">${phase.phase}</h3>
-                <div class="phase-meta">
-                    <span class="phase-dates">${phase.days} days (${phase.startDate} to ${phase.endDate})</span>
-                </div>
-                ${statusHTML}
-                <button class="toggle-button" onclick="toggleDetails(${index})">${isActive ? 'Hide Details' : 'Show Details'}</button>
-                <div class="phase-details${isActive ? ' active' : ''}" id="details-${index}">
-                    <div class="phase-section">
-                        <h4>5 Rules</h4>
-                        <ul>
-                            ${phase.rules.map(rule => `<li>${rule}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="phase-section">
-                        <h4>Desired Outcome</h4>
-                        <ul>
-                            ${phase.outcomes.map(outcome => `<li>${outcome}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
-
-            return phaseCard;
-        }
-
-        // Toggle details visibility
-        function toggleDetails(index) {
-            const details = document.getElementById(`details-${index}`);
-            const button = document.querySelector(`#phase-${index} .toggle-button`);
-            if (details.classList.contains('active')) {
-                details.classList.remove('active');
-                button.textContent = 'Show Details';
-            } else {
-                details.classList.add('active');
-                button.textContent = 'Hide Details';
-            }
-        }
-
-        // Update phase countdowns
-        function updatePhaseCountdowns() {
-            const phaseArray = generatePhaseArray();
-            const currentDate = new Date(); // Use current time for real-time updates
-
-            phaseArray.forEach((phase, index) => {
-                if (phase.phase === 'Remaining Unplanned') return; // Skip countdown for remaining days
-
-                const phaseStart = new Date(phase.startDate + 'T00:00:00+05:30').getTime();
-                const phaseEnd = new Date(phase.endDate + 'T23:59:59+05:30').getTime();
-                const now = currentDate.getTime();
-
-                const phaseCard = document.getElementById(`phase-${index}`);
-                if (!phaseCard) return;
-
-                if (phaseEnd < now) {
-                    // Completed phase
-                    const countdownGrid = phaseCard.querySelector('.phase-countdown-grid');
-                    if (countdownGrid) {
-                        countdownGrid.outerHTML = `
-                            <div class="phase-completed">
-                                Phase Conquered! 🔥 Ready for the Next Challenge
-                            </div>
-                        `;
-                    }
-                    return;
-                }
-
-                if (phaseStart > now) {
-                    // Not started, no countdown
-                    return;
-                }
-
-                // Active phase, update countdown
-                const distance = phaseEnd - now;
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                const daysElement = document.getElementById(`phase-${index}-days`);
-                const hoursElement = document.getElementById(`phase-${index}-hours`);
-                const minutesElement = document.getElementById(`phase-${index}-minutes`);
-                const secondsElement = document.getElementById(`phase-${index}-seconds`);
-
-                if (daysElement) daysElement.textContent = days.toString().padStart(2, '0');
-                if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
-                if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
-                if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
-            });
-        }
-
-        // Update main countdown
-        const targetDate = new Date('2028-04-23T00:00:00+05:30').getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                document.querySelector('.countdown-grid').innerHTML = 
-                    '<div class="col-span-full text-center"><p class="text-3xl font-bold text-[#00ff9f]">🚀 Mission Accomplished!</p></div>';
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days.toString().padStart(3, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        // Initialize
-        setInterval(() => {
-            updateCountdown();
-            updatePhaseCountdowns();
-        }, 1000);
         document.addEventListener('DOMContentLoaded', () => {
-            updateCountdown();
-            renderPhaseCards();
-            updatePhaseCountdowns();
-        });
+            // Hero text animation
+            const animatedText = document.getElementById('hero-animated-text');
+            if(animatedText) {
+                const phrases = ["AI Insights", "Total Visibility", "Smarter Growth"];
+                let phraseIndex = 0;
+                setInterval(() => {
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    animatedText.style.opacity = '0';
+                    setTimeout(() => {
+                        animatedText.textContent = phrases[phraseIndex];
+                        animatedText.style.opacity = '1';
+                    }, 300);
+                }, 3000);
+            }
 
-        const rulesIdea = [
-                        'Complete 1-hour workout (strength + cardio)',
-                        'Maintain a 2000-calorie diet with 150g protein',
-                        'Read 10 pages of a self-development book',
-                        'Daily 20-minute meditation',
-                        'No social media before 7 PM',
-                        'Journal thoughts and progress every night',
-                        'Complete a challenging puzzle or brain game daily',
-                        'Run 5 km three times per week',
-                        'Incorporate HIIT workouts twice weekly',
-                        'Maintain hydration with 3L water daily',
-                        'Sleep 7-8 hours per night',
-                        'Learn a new skill (e.g., coding, language) 1 hour daily',
-                        'Practice skill in real-world scenarios weekly',
-                        'Seek feedback from mentors biweekly',
-                        'Document progress in a skill journal',
-                        'Connect with one new person weekly',
-                        'Attend a community event monthly',
-                        'Share knowledge or skills with others',
-                        'Volunteer 5 hours per month',
-                        'Track all expenses daily',
-                        'Save 10% of income monthly',
-                        'Review budget weekly',
-                        'Learn one new financial concept weekly',
-                        'Dedicate 1 hour daily to a creative project',
-                        'Share creative work publicly monthly',
-                        'Experiment with a new medium or style',
-                        'Reflect on creative process weekly',
-                        '-> eat slowly!! -> controll over what are you eating!! -> many phases!!'
-        ]
+            // Feature tabs
+            const tabsContainer = document.getElementById('feature-tabs');
+            if(tabsContainer){
+                const tabs = tabsContainer.querySelectorAll('.feature-tab');
+                const contents = document.querySelectorAll('#feature-content-area .feature-content');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const targetId = tab.getAttribute('data-tab');
+                        contents.forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === targetId) {
+                                content.classList.add('active');
+                            }
+                        });
+                    });
+                });
+            }
+
+            // ROI Calculator
+            const franchiseCountSlider = document.getElementById('franchise-count');
+            const avgRevenueSlider = document.getElementById('avg-revenue');
+            const franchiseCountLabel = document.getElementById('franchise-count-label');
+            const avgRevenueLabel = document.getElementById('avg-revenue-label');
+            const roiResult = document.getElementById('roi-result');
+
+            function calculateROI() {
+                if(!franchiseCountSlider || !avgRevenueSlider || !franchiseCountLabel || !avgRevenueLabel || !roiResult) return;
+                const count = parseInt(franchiseCountSlider.value);
+                const revenue = parseInt(avgRevenueSlider.value);
+                const estimatedIncrease = count * revenue * 0.075; // 7.5% estimated revenue increase
+                franchiseCountLabel.textContent = count.toLocaleString();
+                avgRevenueLabel.textContent = revenue.toLocaleString();
+                roiResult.textContent = '$' + estimatedIncrease.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+            }
+            if(franchiseCountSlider) franchiseCountSlider.addEventListener('input', calculateROI);
+            if(avgRevenueSlider) avgRevenueSlider.addEventListener('input', calculateROI);
+            calculateROI();
+        });
     </script>
 </body>
 </html>
