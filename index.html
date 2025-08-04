@@ -227,6 +227,47 @@
             padding-bottom: 10px;
         }
 
+        .vision-container {
+            margin-top: 10px;
+        }
+
+        .vision-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vision-list li {
+            position: relative;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 69, 0, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid var(--fire-gold);
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vision-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 69, 0, 0.15);
+        }
+
+        .vision-list li:before {
+            content: '→';
+            position: absolute;
+            left: -25px;
+            color: var(--fire-gold);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .vision-list li:hover:before {
+            opacity: 1;
+            transform: translateX(20px);
+        }
+
         @media (max-width: 768px) {
             .phase-meta {
                 flex-direction: column;
@@ -238,6 +279,11 @@
             }
             .phase-countdown-grid {
                 grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+            .vision-list li {
+                padding: 12px 15px;
+                margin-bottom: 12px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -271,10 +317,23 @@
             </div>
         </section>
 
+        <section class="future-vision">
+            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🎯 Future Vision</h2>
+            <div class="vision-container">
+                <ul class="vision-list">
+                    <li>Achieve CAT 99.8+ percentile and secure admission in IIM Ahmedabad, setting the foundation for excellence 🎓</li>
+                    <li>Get 50 LPA + job offer letter from IIM Ahmedabad</li>
+                    <li>Get 100k+ subscribers on YouTube</li>
+                </ul>
+            </div>
+        </section>
+
         <section class="glass-card">
             <h2 class="text-2xl font-bold text-[#ffd700] mb-6">📅 Active & Upcoming Phases</h2>
             <div id="phase-container"></div>
         </section>
+
+        
         
         <section class="glass-card completed-section">
             <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🏆 Completed Phases</h2>
@@ -290,7 +349,7 @@
             const totalDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)); // 1000 days
 
             // Define your phases here with custom durations
-            const phaseDetails = [
+            const phaseDetails =[
                 // phase 1
                 {
                     days:20,
@@ -299,14 +358,15 @@
                         '12000+ steps everyday at any HOW !!',
                         'Read min. 30 minutes - deep work session !!',
                         'No unhealthy packet food - stay away from palm oil unhealthy snacks',
-                        'Give 1 Quant MOCK - 40 minutes',
+                        'Learn VARC everyday',
                         'Follow nofap',
-                        'Know how much you eat !!! ',
+                        'Eat slowly with joy of each bite of food- whatever you are eating',
                     ],
                     outcomes: [
                         'Develop habit of reading',
+                        'Complete VARC section Learning with notes!!',
                         'Trying to build a morning routine',
-                        'Learn to say NO to undealthy food !!',
+                        'Learn to say NO to undealthy packet food !!',
                     ]
                 },
                 // phase 2
@@ -317,11 +377,15 @@
                         '12000+ steps everyday at any HOW !!',
                         'Read min. 45 minutes - deep work session !!',
                         'Cut refined sugar from your diet completely !!',
-                        'Give 1 DILR MOCK - 40 minutes',
+                        'Learn Quant Everyday',
                         'Follow nofap',
-                        'Controll on how much you eat !!! ',
+                        'Eat slowly with joy of each bite of food- whatever you are eating',
                     ],
                     outcomes: [
+                        'Develop habit of reading',
+                        'Complete Quant section Learning with notes!!',
+                        'Trying to build a morning routine',
+                        'Learn to say NO to refined sugar !!',
                     ]
                 },
                 // phase 3
@@ -331,13 +395,16 @@
                         'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps and pushups',
                         '12000+ steps everyday at any HOW !!',
                         'Read min. 60 minutes - deep work session !!',
+                        'Learn DILR Everyday',
                         'Cut refined sugar from your diet completely !!',
-                        'Give 1 VARC MOCK - 40 minutes',
                         'Follow nofap',
-                        'Understand pace of eating food !!',    
+                        'Eat in limit whatever you are eating!!',    
                     ],
                     outcomes: [
-                       
+                        'Develop habit of reading',
+                        'Complete DILR section Learning with notes!!',
+                        'Trying to build a morning routine',
+                        'Learn to say NO to refined sugar !!',
                     ]
                 },
                 // phase 4
@@ -348,12 +415,17 @@
                         '12000+ steps everyday at any HOW !! with 1 running session in a day',
                         'Read min. 90 minutes - deep work session !!',
                         'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
-                        'Give 1 Quant / DILR / VARC MOCK - 40 minutes',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10 PM - 5 AM)',
-                        'Eat slowly - whatever you are eating !!',
+                        'Give 1 Quant / DILR / VARC MOCK - 40 minutes + Analysis',
+                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
+                        'Eat in limit whatever you are eating!!',    
                     ],
                     outcomes: [
-                        
+                        'Develop habit of reading',
+                        'Trying to build a morning routine',
+                        'begin your running journey !!',
+                        'Learn to say NO to unhealthy food !!',
+                        'fix your sleep schedule',
+                        'Sit for 40 minutes MOCK',
                     ]
                 },
                 // phase 5
@@ -364,12 +436,17 @@
                         '12000+ steps everyday at any HOW !! with 1 running session in a day',
                         'Read min. 90 minutes - deep work session !! - work on your reading speed',
                         'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
-                        'Give 1 VARC MOCK - 40 minutes',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10 PM - 5 AM)',
+                        'Give 1 Quant / DILR / VARC MOCK - 80 minutes + with Analysis',
+                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
                         'No food after 6 PM',
                     ],
                     outcomes: [
-                        
+                        'Increase reading speed',
+                        'Follow morning strength routine!!',
+                        'begin your running journey !!',
+                        'Learn to say NO to unhealthy food !!',
+                        'fix your sleep schedule',
+                        'Sit for 80 minutes MOCK',
                     ]
                 },
                 // phase 6
@@ -377,15 +454,21 @@
                     days: 20,
                     rules: [
                         'Give 1 full - MOCK everyday !! - 120 minutes',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10 PM - 5 AM)',
                         '1 Hour morning routine with surya-namaskar, pranayam, squats, pushups, situps and meditation !!',
                         '12000+ steps everyday at any HOW !! with 1 running session in a day',
                         'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
                         'No food after 6 PM',
+                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
                         'Don\'t waste your time at all in cheap content'
                     ],
                     outcomes: [
                         'CAT - 99.8+ PR',
+                        'Increase reading speed',
+                        'Follow morning strength routine!!',
+                        'begin your running journey !!',
+                        'Learn to say NO to unhealthy food !!',
+                        'fix your sleep schedule',
+                        'Sit for 120 minutes MOCK'
                     ]
                 },
                 // phase 7
@@ -404,55 +487,225 @@
                 {
                     days: 31,
                     rules: [
-                        ''
+                        'Complete 5KM run every morning before sunrise',
+                        'Record and analyze your running metrics (pace, heart rate, etc.)',
+                        'Practice English speaking for 30 minutes daily with language exchange partners',
+                        'Read one business/economics article daily and summarize key points',
+                        'Master professional email writing and business communication',
+                        'Continue morning workout routine (surya-namaskar, strength training)',
+                        'Maintain clean diet and intermittent fasting (16/8)',
+                        'Learn 5 new business/finance terms daily'
                     ],
                     outcomes: [
-                        'Run 5 KM without break every day',
-                        'Build your personality like Professional- English Fluency, Professional Etiquetes and General Knowledge'
+                        'Run 5 KM without break every day at consistent pace',
+                        'Improve English fluency and professional communication',
+                        'Build foundation in business etiquette and professional conduct',
+                        'Develop deeper understanding of economic concepts'
                     ]
                 },
                 // phase 9
                 {
                     days: 28,
                     rules: [
-                        ],
-                     outcomes: [
-                        'Run 5 KM under 30 minutes',
-                        'Build your personality like Professional- English Fluency, Professional Etiquetes and General Knowledge'
+                        'Implement interval training in running (sprint/jog alternates)',
+                        'Practice speed reading techniques for 30 minutes daily',
+                        'Take one professional certification course',
+                        'Write one analytical article weekly',
+                        'Practice mock interviews with professionals',
+                        'Network with 2 new professionals weekly',
+                        'Complete 2 case studies weekly',
+                        'Study successful IIM alumni stories and strategies'
+                    ],
+                    outcomes: [
+                        'Run 5 KM under 30 minutes consistently',
+                        'Master speed reading and comprehension',
+                        'Build professional network for future opportunities',
+                        'Develop structured problem-solving approach'
                     ]
                 },
                 // phase 10
                 {
                     days: 31,
                     rules: [
+                        'Advanced running program with pace training',
+                        'Practice group discussions and presentations daily',
+                        'Conduct mock interviews as both interviewer and candidate',
+                        'Study successful business cases and present analysis',
+                        'Create and follow personal branding strategy',
+                        'Start mentoring juniors in CAT preparation',
+                        'Record and analyze mock interview performances',
+                        'Build professional portfolio and LinkedIn presence'
                     ],
                     outcomes: [
-                        'Run 5 KM under 25 minutes',
-                        'Secure IIM-A by personal Interview'
+                        'Run 5 KM under 25 minutes consistently',
+                        'Master interview and group discussion skills',
+                        'Develop compelling personal brand story',
+                        'Secure IIM-A through stellar interview performance'
                     ]
                 },
                 // phase 11
                 {
                     days: 75,
                     rules: [
+                        'Create and schedule content for YouTube (3 videos/week)',
+                        'Build engagement strategy for social media',
+                        'Network with successful content creators',
+                        'Study YouTube analytics and optimization',
+                        'Research and outline business plan for startup',
+                        'Attend startup and entrepreneurship workshops',
+                        'Practice public speaking and presentation skills',
+                        'Build minimum viable product for business idea'
                     ],
                     outcomes: [
-                        'Get into IIM - Ahmedabad',
-                        'Upload content on YouTube with consistency'
+                        'Launch successful YouTube channel with consistent uploads',
+                        'Build engaged community around content',
+                        'Get accepted into IIM Ahmedabad',
+                        'Develop concrete business implementation plan'
                     ]
                 },
                 // phase 12
                 {
                     days: 20,
                     rules: [
+                        'Create comprehensive documentation of your journey',
+                        'Mentor others starting their transformation journey',
+                        'Finalize business plan and execution strategy',
+                        'Build relationships with potential investors/partners',
+                        'Create content highlighting your complete transformation',
+                        'Organize workshops/seminars sharing your experience',
+                        'Plan next phase of life post IIM-A',
+                        'Set up systems for sustainable growth'
                     ],
                     outcomes: [
-                        '',
+                        'Document complete transformation journey',
+                        'Inspire and guide others on similar paths',
+                        'Ready to start next chapter at IIM-A',
+                        'Establish foundation for future business ventures'
+                    ]
+                },
+                // phase 13 (Focus: IIM-A First Term Excellence)
+                {
+                    days: 90,
+                    rules: [
+                        'Maintain 5AM workout routine even during academic pressure',
+                        'Attend all classes with 100% preparation and participation',
+                        'Network with 2 new classmates daily - build strong connections',
+                        'Create weekly YouTube content documenting IIM life',
+                        'Maintain morning fitness routine (running + strength)',
+                        'Practice case studies for 2 hours daily',
+                        'Participate actively in all club activities',
+                        'Submit all assignments 2 days before deadline'
+                    ],
+                    outcomes: [
+                        'Top 10% position in first term',
+                        'Build strong network within IIM-A batch',
+                        'Grow YouTube to 10k subscribers',
+                        'Maintain fitness and morning routine'
+                    ]
+                },
+                // phase 14 (Focus: Leadership & Campus Impact)
+                {
+                    days: 90,
+                    rules: [
+                        'Lead at least one major club/committee initiative',
+                        'Mentor 3 juniors in their CAT preparation',
+                        'Create and host weekly business case discussion group',
+                        'Daily 2-hour deep work on startup idea development',
+                        'Continue consistent content creation',
+                        'Network with visiting executives and alumni',
+                        'Maintain physical fitness goals',
+                        'Practice public speaking daily'
+                    ],
+                    outcomes: [
+                        'Secure leadership position in preferred club',
+                        'Build reputation as domain expert',
+                        'Reach 25k YouTube subscribers',
+                        'Complete MVP of business idea'
+                    ]
+                },
+                // phase 15 (Focus: Summer Internship Preparation)
+                {
+                    days: 90,
+                    rules: [
+                        'Research target companies thoroughly',
+                        'Practice 2 interviews daily with peers',
+                        'Build industry-specific knowledge base',
+                        'Network with alumni in target companies',
+                        'Create compelling internship presentations',
+                        'Maintain academic excellence',
+                        'Continue fitness and content creation',
+                        'Document journey for future aspirants'
+                    ],
+                    outcomes: [
+                        'Secure dream company summer internship',
+                        'Build strong professional network',
+                        'Reach 50k YouTube subscribers',
+                        'Maintain top 10% academic position'
+                    ]
+                },
+                // phase 16 (Focus: Summer Internship Excellence)
+                {
+                    days: 60,
+                    rules: [
+                        'Arrive 30 minutes early every day',
+                        'Document daily learnings and insights',
+                        'Connect with 2 new colleagues daily',
+                        'Identify and solve additional problems',
+                        'Create weekly progress reports',
+                        'Share internship experiences on YouTube',
+                        'Maintain workout routine despite work',
+                        'Research industry trends daily'
+                    ],
+                    outcomes: [
+                        'Secure PPO with excellent terms',
+                        'Build strong professional network',
+                        'Create valuable company impact',
+                        'Document success framework for future interns'
+                    ]
+                },
+                // phase 17 (Focus: Final Year Mastery)
+                {
+                    days: 90,
+                    rules: [
+                        'Lead major campus initiatives',
+                        'Mentor juniors in placements',
+                        'Work on business plan development',
+                        'Network with potential investors',
+                        'Create comprehensive YouTube series',
+                        'Maintain academic excellence',
+                        'Build professional wardrobe',
+                        'Practice advanced presentation skills'
+                    ],
+                    outcomes: [
+                        'Secure dream job offer (50 LPA+)',
+                        'Reach 100k YouTube subscribers',
+                        'Complete business plan',
+                        'Build investor connections'
+                    ]
+                },
+                // phase 18 (Focus: Legacy & Transition)
+                {
+                    days: 60,
+                    rules: [
+                        'Document complete transformation journey',
+                        'Create comprehensive guide for aspirants',
+                        'Build systems for future content',
+                        'Plan post-graduation business launch',
+                        'Conduct mentoring sessions',
+                        'Create transition plan',
+                        'Network with successful entrepreneurs',
+                        'Build personal brand presence'
+                    ],
+                    outcomes: [
+                        'Successfully transition to next phase of life',
+                        'Leave lasting impact at IIM-A',
+                        'Build strong foundation for future ventures',
+                        'Create blueprint for others to follow'
                     ]
                 }
             ];
 
-            const phases = [];
+            const phases = []; 
             let currentDate = new Date(startDate);
             let daysPlanned = 0;
 
