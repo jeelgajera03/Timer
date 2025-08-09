@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1000 Days of Fire - Transform Your Legacy</title>
+    <title>1000 Days of Mamba - Discipline • Excellence • Legacy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
 
         :root {
-            --fire-orange: #ff4500;
-            --fire-gold: #ffd700;
+            --mamba-gold: #ffd700;
+            --mamba-purple: #552583;
+            --mamba-black: #000000;
             --dark-bg: #0a0a0a;
-            --glass-bg: rgba(0, 0, 0, 0.85);
-            --digital-green: #00ff9f;
+            --glass-bg: rgba(85, 37, 131, 0.15);
+            --digital-gold: #ffd700;
+            --mamba-gradient: linear-gradient(135deg, #552583 0%, #000000 50%, #552583 100%);
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0f0f 50%, #0a0a0a 100%);
+            background: var(--mamba-gradient);
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
             color: #fff;
@@ -33,7 +35,7 @@
             font-family: 'Orbitron', monospace;
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            background: linear-gradient(45deg, #ff4500, #ffd700);
+            background: linear-gradient(45deg, #ffd700, #ffffff);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -43,7 +45,7 @@
 
         .subtitle {
             font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--fire-gold);
+            color: var(--mamba-gold);
             text-align: center;
             margin-bottom: 40px;
         }
@@ -52,10 +54,10 @@
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             padding: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(85, 37, 131, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -69,21 +71,106 @@
             gap: 20px;
             padding: 20px;
             border-radius: 15px;
-            border: 1px solid var(--digital-green);
+            border: 1px solid var(--digital-gold);
         }
 
         .time-number {
             font-family: 'Orbitron', monospace;
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
-            color: var(--digital-green);
+            color: var(--digital-gold);
         }
 
         .time-label {
             font-size: clamp(0.9rem, 2vw, 1rem);
-            color: #00b7eb;
+            color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
+        }
+
+        .mamba-rules-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(85, 37, 131, 0.3) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 2px solid var(--mamba-gold);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mamba-rules-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #552583, #ffd700);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .mamba-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--mamba-gold);
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .mamba-quote {
+            font-style: italic;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid var(--mamba-gold);
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .rule-item {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .rule-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--mamba-gold);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .rule-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mamba-gold);
+            margin-bottom: 10px;
+        }
+
+        .rule-text {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
 
         .phase-card {
@@ -92,18 +179,18 @@
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .phase-card.active {
-            border: 2px solid var(--fire-gold);
+            border: 2px solid var(--mamba-gold);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
 
         .phase-title {
             font-family: 'Orbitron', monospace;
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--fire-gold);
+            color: var(--mamba-gold);
             margin-bottom: 10px;
         }
 
@@ -116,9 +203,9 @@
 
         .phase-dates, .phase-theme {
             font-size: clamp(0.9rem, 1.8vw, 1rem);
-            color: #ff8c00;
+            color: #ffd700;
             padding: 5px 10px;
-            background: rgba(255, 140, 0, 0.1);
+            background: rgba(255, 215, 0, 0.1);
             border-radius: 15px;
         }
 
@@ -128,7 +215,7 @@
 
         .phase-section h4 {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--fire-gold);
+            color: var(--mamba-gold);
             margin-bottom: 10px;
         }
 
@@ -145,7 +232,7 @@
         }
 
         .phase-section li::before {
-            content: '🔥';
+            content: '🐍';
             position: absolute;
             left: -20px;
         }
@@ -156,7 +243,7 @@
             gap: 15px;
             padding: 15px;
             border-radius: 10px;
-            border: 1px solid var(--digital-green);
+            border: 1px solid var(--digital-gold);
             margin-bottom: 15px;
         }
 
@@ -172,12 +259,12 @@
             font-family: 'Orbitron', monospace;
             font-size: clamp(1.5rem, 4vw, 2rem);
             font-weight: 700;
-            color: var(--digital-green);
+            color: var(--digital-gold);
         }
 
         .phase-time-label {
             font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-            color: #00b7eb;
+            color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -187,29 +274,29 @@
             padding: 15px;
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-weight: 700;
-            color: var(--fire-gold);
-            background: rgba(255, 69, 0, 0.1);
+            color: var(--mamba-gold);
+            background: rgba(255, 215, 0, 0.1);
             border-radius: 10px;
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .toggle-button {
-            background: var(--fire-orange);
-            color: #fff;
+            background: var(--mamba-purple);
+            color: var(--mamba-gold);
             font-family: 'Orbitron', monospace;
             font-size: clamp(0.9rem, 1.8vw, 1rem);
             padding: 8px 16px;
             border-radius: 10px;
-            border: none;
+            border: 1px solid var(--mamba-gold);
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .toggle-button:hover {
-            background: var(--fire-gold);
-            color: #000;
+            background: var(--mamba-gold);
+            color: var(--mamba-black);
         }
 
         .phase-details {
@@ -222,8 +309,8 @@
         }
 
         .completed-section h2 {
-            color: var(--fire-gold);
-            border-bottom: 2px solid rgba(255, 69, 0, 0.3);
+            color: var(--mamba-gold);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
             padding-bottom: 10px;
         }
 
@@ -240,9 +327,9 @@
             position: relative;
             padding: 15px 20px;
             margin-bottom: 15px;
-            background: rgba(255, 69, 0, 0.1);
+            background: rgba(85, 37, 131, 0.2);
             border-radius: 10px;
-            border-left: 3px solid var(--fire-gold);
+            border-left: 3px solid var(--mamba-gold);
             font-size: clamp(0.95rem, 1.8vw, 1.1rem);
             color: rgba(255, 255, 255, 0.9);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -251,14 +338,14 @@
         .vision-list li:hover {
             transform: translateX(5px);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-            background: rgba(255, 69, 0, 0.15);
+            background: rgba(85, 37, 131, 0.3);
         }
 
         .vision-list li:before {
             content: '→';
             position: absolute;
             left: -25px;
-            color: var(--fire-gold);
+            color: var(--mamba-gold);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
@@ -285,18 +372,51 @@
                 margin-bottom: 12px;
                 font-size: 0.95rem;
             }
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="text-center mb-10">
-            <h1 class="main-title">1000 Days of Fire</h1>
-            <p class="subtitle">🔥 Transform Your Body • Elevate Your Mind • Build Your Legacy 🔥</p>
+            <h1 class="main-title">1000 Days of Mamba</h1>
+            <p class="subtitle">🐍 Discipline • Excellence • Relentless Improvement • Legacy 🐍</p>
         </header>
 
+        <!-- Mamba Mentality Rules Section -->
+        <section class="mamba-rules-card">
+            <h2 class="mamba-title">🐍 MAMBA MENTALITY</h2>
+            <div class="mamba-quote">
+                "The most important thing is to try and inspire people so that they can be great at whatever they want to do." - Kobe Bryant
+            </div>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <div class="rule-number">Rule #1</div>
+                    <div class="rule-text">Follow nofap</div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">Rule #2</div>
+                    <div class="rule-text">No sugar (cut refined sugar) and No maida</div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">Rule #3</div>
+                    <div class="rule-text">No palm oil and avoid oily food</div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">Rule #4</div>
+                    <div class="rule-text">Eat slowly with joy and eat in limit (No over-eating)</div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">Rule #5</div>
+                    <div class="rule-text">Follow water fasting on every monday</div>
+                </div>
+            </div>
+        </section>
+
         <section class="glass-card">
-            <h2 class="text-2xl font-bold text-[#ffd700] text-center mb-6">🪐 Mission Countdown</h2>
+            <h2 class="text-2xl font-bold text-[#ffd700] text-center mb-6">⏰ Mission Countdown</h2>
             <div class="countdown-grid">
                 <div class="time-unit">
                     <span class="time-number" id="days">0</span>
@@ -318,7 +438,7 @@
         </section>
 
         <section class="future-vision">
-            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🎯 Future Vision</h2>
+            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🎯 Legacy Vision</h2>
             <div class="vision-container">
                 <ul class="vision-list">
                     <li>Achieve CAT 99.8+ percentile and secure admission in IIM Ahmedabad, setting the foundation for excellence 🎓</li>
@@ -344,365 +464,59 @@
     <script>
         // Generate phase array
         function generatePhaseArray() {
-            const startDate = new Date('2025-08-03');
-            const endDate = new Date('2028-04-29');
+            const startDate = new Date('2025-08-10');
+            const endDate = new Date('2028-05-05');
             const totalDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)); // 1000 days
 
             // Define your phases here with custom durations
             const phaseDetails =[
                 // phase 1
                 {
-                    days:20,
+                    days:22,
                     rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam and squats',
-                        '12000+ steps everyday at any HOW !!',
-                        'Read min. 30 minutes - deep work session !!',
-                        'No unhealthy packet food - stay away from palm oil unhealthy snacks',
-                        'Learn VARC everyday',
-                        'Follow nofap',
-                        'Eat slowly with joy of each bite of food- whatever you are eating',
+                        
                     ],
                     outcomes: [
-                        'Develop habit of reading',
-                        'Complete VARC section Learning with notes!!',
-                        'Trying to build a morning routine',
-                        'Learn to say NO to undealthy packet food !!',
+                        
                     ]
                 },
-                // phase 2
                 {
-                    days:20,
+                    days:23,
                     rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats and situps',
-                        '12000+ steps everyday at any HOW !!',
-                        'Read min. 45 minutes - deep work session !!',
-                        'Cut refined sugar from your diet completely !!',
-                        'Learn Quant Everyday',
-                        'Follow nofap',
-                        'Eat slowly with joy of each bite of food- whatever you are eating',
+                        
                     ],
                     outcomes: [
-                        'Develop habit of reading',
-                        'Complete Quant section Learning with notes!!',
-                        'Trying to build a morning routine',
-                        'Learn to say NO to refined sugar !!',
+                        
                     ]
                 },
-                // phase 3
                 {
-                    days: 20,
+                    days:22,
                     rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps and pushups',
-                        '12000+ steps everyday at any HOW !!',
-                        'Read min. 60 minutes - deep work session !!',
-                        'Learn DILR Everyday',
-                        'Cut refined sugar from your diet completely !!',
-                        'Follow nofap',
-                        'Eat in limit whatever you are eating!!',    
+                        
                     ],
                     outcomes: [
-                        'Develop habit of reading',
-                        'Complete DILR section Learning with notes!!',
-                        'Trying to build a morning routine',
-                        'Learn to say NO to refined sugar !!',
+                        
                     ]
                 },
-                // phase 4
                 {
-                    days: 20,
+                    days:23,
                     rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps, (30 X3) pushups and meditation',
-                        '12000+ steps everyday at any HOW !! with 1 running session in a day',
-                        'Read min. 90 minutes - deep work session !!',
-                        'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
-                        'Give 1 Quant / DILR / VARC MOCK - 40 minutes + Analysis',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
-                        'Eat in limit whatever you are eating!!',    
+                        
                     ],
                     outcomes: [
-                        'Develop habit of reading',
-                        'Trying to build a morning routine',
-                        'begin your running journey !!',
-                        'Learn to say NO to unhealthy food !!',
-                        'fix your sleep schedule',
-                        'Sit for 40 minutes MOCK',
+                        
                     ]
                 },
-                // phase 5
                 {
-                    days: 20,
+                    days:23,
                     rules: [
-                        'Start your morning with 12 surya-namaskar everyday, pranayaam, (30 X3) squats, (30 X3) situps, (30 X3) pushups and 15 minutes meditation',
-                        '12000+ steps everyday at any HOW !! with 1 running session in a day',
-                        'Read min. 90 minutes - deep work session !! - work on your reading speed',
-                        'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
-                        'Give 1 Quant / DILR / VARC MOCK - 80 minutes + with Analysis',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
-                        'No food after 6 PM',
+                        
                     ],
                     outcomes: [
-                        'Increase reading speed',
-                        'Follow morning strength routine!!',
-                        'begin your running journey !!',
-                        'Learn to say NO to unhealthy food !!',
-                        'fix your sleep schedule',
-                        'Sit for 80 minutes MOCK',
+                        
                     ]
                 },
-                // phase 6
-                {
-                    days: 20,
-                    rules: [
-                        'Give 1 full - MOCK everyday !! - 120 minutes',
-                        '1 Hour morning routine with surya-namaskar, pranayam, squats, pushups, situps and meditation !!',
-                        '12000+ steps everyday at any HOW !! with 1 running session in a day',
-                        'Say No to unhealthy food - No sugar, No maida and No palm-oil !!',
-                        'No food after 6 PM',
-                        'sleep on time and wake up early on time with taking care of 6-7 HOURS of sleep(10/11 PM - 5 AM)',
-                        'Don\'t waste your time at all in cheap content'
-                    ],
-                    outcomes: [
-                        'CAT - 99.8+ PR',
-                        'Increase reading speed',
-                        'Follow morning strength routine!!',
-                        'begin your running journey !!',
-                        'Learn to say NO to unhealthy food !!',
-                        'fix your sleep schedule',
-                        'Sit for 120 minutes MOCK'
-                    ]
-                },
-                // phase 7
-                {
-                    days: 31,
-                    rules: [
-                    ],
-                    outcomes: [
-                        'Reach to 75 KG body weight',   
-                        'Launch your content creation journey',
-                        'Create 1 Full stack web-development project - MVP product of your business',
-                        'Run 5 KM every day',
-                    ]
-                },
-                // phase 8
-                {
-                    days: 31,
-                    rules: [
-                        'Complete 5KM run every morning before sunrise',
-                        'Record and analyze your running metrics (pace, heart rate, etc.)',
-                        'Practice English speaking for 30 minutes daily with language exchange partners',
-                        'Read one business/economics article daily and summarize key points',
-                        'Master professional email writing and business communication',
-                        'Continue morning workout routine (surya-namaskar, strength training)',
-                        'Maintain clean diet and intermittent fasting (16/8)',
-                        'Learn 5 new business/finance terms daily'
-                    ],
-                    outcomes: [
-                        'Run 5 KM without break every day at consistent pace',
-                        'Improve English fluency and professional communication',
-                        'Build foundation in business etiquette and professional conduct',
-                        'Develop deeper understanding of economic concepts'
-                    ]
-                },
-                // phase 9
-                {
-                    days: 28,
-                    rules: [
-                        'Implement interval training in running (sprint/jog alternates)',
-                        'Practice speed reading techniques for 30 minutes daily',
-                        'Take one professional certification course',
-                        'Write one analytical article weekly',
-                        'Practice mock interviews with professionals',
-                        'Network with 2 new professionals weekly',
-                        'Complete 2 case studies weekly',
-                        'Study successful IIM alumni stories and strategies'
-                    ],
-                    outcomes: [
-                        'Run 5 KM under 30 minutes consistently',
-                        'Master speed reading and comprehension',
-                        'Build professional network for future opportunities',
-                        'Develop structured problem-solving approach'
-                    ]
-                },
-                // phase 10
-                {
-                    days: 31,
-                    rules: [
-                        'Advanced running program with pace training',
-                        'Practice group discussions and presentations daily',
-                        'Conduct mock interviews as both interviewer and candidate',
-                        'Study successful business cases and present analysis',
-                        'Create and follow personal branding strategy',
-                        'Start mentoring juniors in CAT preparation',
-                        'Record and analyze mock interview performances',
-                        'Build professional portfolio and LinkedIn presence'
-                    ],
-                    outcomes: [
-                        'Run 5 KM under 25 minutes consistently',
-                        'Master interview and group discussion skills',
-                        'Develop compelling personal brand story',
-                        'Secure IIM-A through stellar interview performance'
-                    ]
-                },
-                // phase 11
-                {
-                    days: 75,
-                    rules: [
-                        'Create and schedule content for YouTube (3 videos/week)',
-                        'Build engagement strategy for social media',
-                        'Network with successful content creators',
-                        'Study YouTube analytics and optimization',
-                        'Research and outline business plan for startup',
-                        'Attend startup and entrepreneurship workshops',
-                        'Practice public speaking and presentation skills',
-                        'Build minimum viable product for business idea'
-                    ],
-                    outcomes: [
-                        'Launch successful YouTube channel with consistent uploads',
-                        'Build engaged community around content',
-                        'Get accepted into IIM Ahmedabad',
-                        'Develop concrete business implementation plan'
-                    ]
-                },
-                // phase 12
-                {
-                    days: 20,
-                    rules: [
-                        'Create comprehensive documentation of your journey',
-                        'Mentor others starting their transformation journey',
-                        'Finalize business plan and execution strategy',
-                        'Build relationships with potential investors/partners',
-                        'Create content highlighting your complete transformation',
-                        'Organize workshops/seminars sharing your experience',
-                        'Plan next phase of life post IIM-A',
-                        'Set up systems for sustainable growth'
-                    ],
-                    outcomes: [
-                        'Document complete transformation journey',
-                        'Inspire and guide others on similar paths',
-                        'Ready to start next chapter at IIM-A',
-                        'Establish foundation for future business ventures'
-                    ]
-                },
-                // phase 13 (Focus: IIM-A First Term Excellence)
-                {
-                    days: 90,
-                    rules: [
-                        'Maintain 5AM workout routine even during academic pressure',
-                        'Attend all classes with 100% preparation and participation',
-                        'Network with 2 new classmates daily - build strong connections',
-                        'Create weekly YouTube content documenting IIM life',
-                        'Maintain morning fitness routine (running + strength)',
-                        'Practice case studies for 2 hours daily',
-                        'Participate actively in all club activities',
-                        'Submit all assignments 2 days before deadline'
-                    ],
-                    outcomes: [
-                        'Top 10% position in first term',
-                        'Build strong network within IIM-A batch',
-                        'Grow YouTube to 10k subscribers',
-                        'Maintain fitness and morning routine'
-                    ]
-                },
-                // phase 14 (Focus: Leadership & Campus Impact)
-                {
-                    days: 90,
-                    rules: [
-                        'Lead at least one major club/committee initiative',
-                        'Mentor 3 juniors in their CAT preparation',
-                        'Create and host weekly business case discussion group',
-                        'Daily 2-hour deep work on startup idea development',
-                        'Continue consistent content creation',
-                        'Network with visiting executives and alumni',
-                        'Maintain physical fitness goals',
-                        'Practice public speaking daily'
-                    ],
-                    outcomes: [
-                        'Secure leadership position in preferred club',
-                        'Build reputation as domain expert',
-                        'Reach 25k YouTube subscribers',
-                        'Complete MVP of business idea'
-                    ]
-                },
-                // phase 15 (Focus: Summer Internship Preparation)
-                {
-                    days: 90,
-                    rules: [
-                        'Research target companies thoroughly',
-                        'Practice 2 interviews daily with peers',
-                        'Build industry-specific knowledge base',
-                        'Network with alumni in target companies',
-                        'Create compelling internship presentations',
-                        'Maintain academic excellence',
-                        'Continue fitness and content creation',
-                        'Document journey for future aspirants'
-                    ],
-                    outcomes: [
-                        'Secure dream company summer internship',
-                        'Build strong professional network',
-                        'Reach 50k YouTube subscribers',
-                        'Maintain top 10% academic position'
-                    ]
-                },
-                // phase 16 (Focus: Summer Internship Excellence)
-                {
-                    days: 60,
-                    rules: [
-                        'Arrive 30 minutes early every day',
-                        'Document daily learnings and insights',
-                        'Connect with 2 new colleagues daily',
-                        'Identify and solve additional problems',
-                        'Create weekly progress reports',
-                        'Share internship experiences on YouTube',
-                        'Maintain workout routine despite work',
-                        'Research industry trends daily'
-                    ],
-                    outcomes: [
-                        'Secure PPO with excellent terms',
-                        'Build strong professional network',
-                        'Create valuable company impact',
-                        'Document success framework for future interns'
-                    ]
-                },
-                // phase 17 (Focus: Final Year Mastery)
-                {
-                    days: 90,
-                    rules: [
-                        'Lead major campus initiatives',
-                        'Mentor juniors in placements',
-                        'Work on business plan development',
-                        'Network with potential investors',
-                        'Create comprehensive YouTube series',
-                        'Maintain academic excellence',
-                        'Build professional wardrobe',
-                        'Practice advanced presentation skills'
-                    ],
-                    outcomes: [
-                        'Secure dream job offer (50 LPA+)',
-                        'Reach 100k YouTube subscribers',
-                        'Complete business plan',
-                        'Build investor connections'
-                    ]
-                },
-                // phase 18 (Focus: Legacy & Transition)
-                {
-                    days: 60,
-                    rules: [
-                        'Document complete transformation journey',
-                        'Create comprehensive guide for aspirants',
-                        'Build systems for future content',
-                        'Plan post-graduation business launch',
-                        'Conduct mentoring sessions',
-                        'Create transition plan',
-                        'Network with successful entrepreneurs',
-                        'Build personal brand presence'
-                    ],
-                    outcomes: [
-                        'Successfully transition to next phase of life',
-                        'Leave lasting impact at IIM-A',
-                        'Build strong foundation for future ventures',
-                        'Create blueprint for others to follow'
-                    ]
-                }
+                
             ];
 
             const phases = []; 
@@ -810,7 +624,7 @@
                     // Completed phase
                     statusHTML = `
                         <div class="phase-completed">
-                            Phase Conquered! 🔥 Ready for the Next Challenge
+                            Phase Conquered! 🐍 Mamba Mentality Activated
                         </div>
                     `;
                 } else if (phaseStart <= now && phaseEnd >= now) {
@@ -899,7 +713,7 @@
                     if (countdownGrid) {
                         countdownGrid.outerHTML = `
                             <div class="phase-completed">
-                                Phase Conquered! 🔥 Ready for the Next Challenge
+                                Phase Conquered! 🐍 Mamba Mentality Activated
                             </div>
                         `;
                     }
@@ -931,14 +745,14 @@
         }
 
         // Update main countdown
-        const targetDate = new Date('2028-04-29T00:00:00+05:30').getTime();
+        const targetDate = new Date('2028-05-06T00:00:00+05:30').getTime();
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
                 document.querySelector('.countdown-grid').innerHTML = 
-                    '<div class="col-span-full text-center"><p class="text-3xl font-bold text-[#00ff9f]">🚀 Mission Accomplished!</p></div>';
+                    '<div class="col-span-full text-center"><p class="text-3xl font-bold text-[#ffd700]">🐍 Mamba Legacy Achieved!</p></div>';
                 return;
             }
 
