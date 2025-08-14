@@ -5,77 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1000 Days of Mamba - Discipline • Excellence • Legacy</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
             --mamba-gold: #ffd700;
             --mamba-purple: #552583;
-            --mamba-gradient: linear-gradient(135deg, #552583 0%, #000000 50%, #552583 100%);
+            --mamba-black: #000000;
+            --mamba-gradient: linear-gradient(135deg, #552583 0%, #1a0b2e 25%, #000000 50%, #1a0b2e 75%, #552583 100%);
             --glass-bg: rgba(85, 37, 131, 0.15);
+            --glass-border: rgba(255, 215, 0, 0.3);
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             background: var(--mamba-gradient);
+            background-attachment: fixed;
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
             color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--mamba-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .main-title {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            background: linear-gradient(45deg, #ffd700, #ffffff);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ffffff, #ffd700);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            animation: shimmer 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: var(--mamba-gold);
             text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 40px;
+            font-style: italic;
         }
 
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 20px;
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(85, 37, 131, 0.3);
+            box-shadow: 0 8px 32px rgba(85, 37, 131, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
         }
 
         .mamba-quote {
             font-style: italic;
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             color: #ffffff;
             text-align: center;
-            margin-bottom: 30px;
-            padding: 15px;
-            border-left: 3px solid var(--mamba-gold);
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 25px;
+            border-left: 4px solid var(--mamba-gold);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border-radius: 15px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: var(--mamba-gold);
+            font-weight: 600;
         }
 
         .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--mamba-gold);
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--mamba-gold);
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .time-unit {
@@ -83,62 +174,248 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            background: rgba(85, 37, 131, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .time-unit:hover {
+            background: rgba(85, 37, 131, 0.4);
+            transform: scale(1.05);
         }
 
         .time-number {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
             font-weight: 700;
             color: var(--mamba-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .time-label {
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--mamba-gold);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--mamba-gold), transparent);
         }
 
         .vision-list {
             list-style: none;
             padding: 0;
+            display: grid;
+            gap: 20px;
         }
 
         .vision-list li {
             position: relative;
-            padding: 15px 20px;
-            margin-bottom: 15px;
+            padding: 20px 25px;
             background: rgba(85, 37, 131, 0.2);
-            border-radius: 10px;
-            border-left: 3px solid var(--mamba-gold);
-            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            border-radius: 15px;
+            border-left: 4px solid var(--mamba-gold);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: rgba(255, 255, 255, 0.9);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .vision-list li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-            background: rgba(85, 37, 131, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            background: rgba(85, 37, 131, 0.4);
+        }
+
+        .vision-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--mamba-gold);
+        }
+
+        .phases-container {
+            display: grid;
+            gap: 25px;
+        }
+
+        .phase-card {
+            background: rgba(85, 37, 131, 0.25);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid var(--mamba-gold);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--mamba-gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .phase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.2);
+            background: rgba(85, 37, 131, 0.4);
+        }
+
+        .phase-title {
+            color: var(--mamba-gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .phase-deadline {
+            color: #ff6b6b;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background: rgba(255, 107, 107, 0.15);
+            border-radius: 8px;
+            display: inline-block;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .phase-goals {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase-goals li {
+            padding: 12px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .phase-goals li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--mamba-gold);
+            font-size: 0.8rem;
+        }
+
+        .phase-goals li:last-child {
+            border-bottom: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mamba-gold);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mamba-gold), #ffffff);
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .glass-card {
+                padding: 20px;
+            }
+            
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
-        <header class="text-center mb-10">
+        <header class="text-center mb-12">
             <h1 class="main-title">MAMBA MENTALITY</h1>
             <p class="subtitle">Discipline • Excellence • Relentless Improvement • Legacy</p>
+            <p class="tagline">"The most important thing is to try and inspire people so that they can be great at whatever they want to do."</p>
         </header>
 
         <section class="glass-card">
             <div class="mamba-quote">
-                Success is not final, failure is not fatal: it is the courage to continue that counts. Every day is a new opportunity to become the person you're meant to be.
-                <div style="text-align: right; margin-top: 15px; font-size: 1rem; color: var(--mamba-gold);">— Winston Churchill</div>
+                "Success is not final, failure is not fatal: it is the courage to continue that counts. Every day is a new opportunity to become the person you're meant to be. The path to greatness is paved with discipline, sacrifice, and an unwavering commitment to excellence."
+                <div class="quote-author">— Winston Churchill & Mamba Philosophy</div>
             </div>
         </section>
 
         <section class="glass-card">
-            <h2 class="text-2xl font-bold text-[#ffd700] text-center mb-6">⏰ Mission Countdown</h2>
+            <h2 class="section-title">⏰ Mission Countdown</h2>
             <div class="countdown-grid">
                 <div class="time-unit">
                     <span class="time-number" id="days">0</span>
@@ -157,31 +434,197 @@
                     <span class="time-label">Seconds</span>
                 </div>
             </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="completedDays">0</div>
+                    <div class="stat-label">Days Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="progressPercent">0%</div>
+                    <div class="stat-label">Progress</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
         </section>
 
         <section class="glass-card">
-            <h2 class="text-2xl font-bold text-[#ffd700] mb-6">🎯 Legacy Vision</h2>
+            <h2 class="section-title">🎯 Legacy Vision</h2>
             <ul class="vision-list">
-                <li>💼 CAREER EXCELLENCE: Secure high-impact role with CTC > ₹50+ LPA in tech/leadership</li>
-                <li>🚀 BUSINESS EMPIRE: Build scalable venture generating MRR > ₹10+ lakhs monthly</li>
-                <li>💪 PHYSICAL PEAK: Achieve 6-pack abs with ~10% body fat through disciplined training</li>
-                <li>📺 CONTENT CREATOR: Launch YouTube channel (podcast/vlog/coaching) with 500K+ subscribers</li>
-                <li>📚 KNOWLEDGE MASTER: Complete advanced certifications in AI/ML and business strategy</li>
-                <li>🌍 GLOBAL EXPLORER: One Foreign trip to JAPAN</li>
+                <li><i class="vision-icon fas fa-briefcase"></i><strong>CAREER EXCELLENCE:</strong> Secure high-impact leadership role with CTC > ₹50+ LPA in tech/strategy</li>
+                <li><i class="vision-icon fas fa-rocket"></i><strong>BUSINESS EMPIRE:</strong> Build scalable venture generating MRR > ₹10+ lakhs monthly</li>
+                <li><i class="vision-icon fas fa-dumbbell"></i><strong>PHYSICAL PEAK:</strong> Achieve 6-pack abs with ~10% body fat through disciplined training</li>
+                <li><i class="vision-icon fas fa-video"></i><strong>CONTENT CREATOR:</strong> Launch YouTube channel (podcast/vlog/coaching) with 500K+ subscribers</li>
+                <li><i class="vision-icon fas fa-brain"></i><strong>KNOWLEDGE MASTER:</strong> Complete advanced certifications in AI/ML and business strategy</li>
+                <li><i class="vision-icon fas fa-globe-asia"></i><strong>GLOBAL EXPLORER:</strong> Experience the culture and innovation of Japan</li>
             </ul>
+        </section>
+
+        <section class="glass-card">
+            <h2 class="section-title">📅 Mission Phases</h2>
+            <div class="phases-container">
+                <div class="phase-card">
+                    <div class="phase-title">Phase 1: Foundation Building</div>
+                    <div class="phase-deadline">Deadline: 30 November 2025</div>
+                    <ul class="phase-goals">
+                        <li>CAT Excellence: Achieve 99.5+ Percentile</li>
+                        <li>Physical Transformation: Reach 90 KG target weight</li>
+                        <li>Communication Mastery: Perfect English fluency</li>
+                        <li>Business Vision: Identify and validate business opportunity</li>
+                        <li>Professional Presence: Build strong LinkedIn/Medium profile</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 2: Skill Development</div>
+                    <div class="phase-deadline">Deadline: 31 March 2026</div>
+                    <ul class="phase-goals">
+                        <li>Interview Mastery: Excel in Personal Interviews & Group Discussions</li>
+                        <li>Fitness Milestone: Achieve 75 KG with improved muscle definition</li>
+                        <li>Business Development: Complete market research & MVP design</li>
+                        <li>Content Creation: Launch YouTube channel with consistent uploads</li>
+                        <li>Tech Advancement: Master AI fundamentals and applications</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 3: Achievement & Launch</div>
+                    <div class="phase-deadline">Deadline: 31 May 2026</div>
+                    <ul class="phase-goals">
+                        <li>Academic Success: Secure admission to IIM Ahmedabad</li>
+                        <li>Athletic Performance: Run 5KM in under 25 minutes daily</li>
+                        <li>Product Development: Complete and test MVP</li>
+                        <li>Content Strategy: Focus on productivity, AI, and personal development</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 4: Integration & Growth</div>
+                    <div class="phase-deadline">Deadline: 30 September 2026</div>
+                    <ul class="phase-goals">
+                        <li>Academic Journey: Begin IIM Ahmedabad program</li>
+                        <li>Strength Building: Focus on muscle development and definition</li>
+                        <li>Market Entry: Launch MVP for beta testing and feedback</li>
+                        <li>Network Expansion: Build strategic professional relationships</li>
+                        <li>Content Evolution: Develop engaging vlog content</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 5: Professional Development</div>
+                    <div class="phase-deadline">Deadline: 31 December 2026</div>
+                    <ul class="phase-goals">
+                        <li>Career Preparation: Secure high-value internship opportunity</li>
+                        <li>Physical Excellence: Continue muscle building regimen</li>
+                        <li>Business Model: Implement bootstrap revenue model</li>
+                        <li>Content Diversification: Launch podcast alongside vlogs</li>
+                        <li>Strategic Networking: Expand professional connections</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 6: Academic Excellence</div>
+                    <div class="phase-deadline">Deadline: 31 March 2027</div>
+                    <ul class="phase-goals">
+                        <li>Academic Focus: Excel in coursework and projects</li>
+                        <li>Athletic Achievement: Train for and complete marathon</li>
+                        <li>Product Enhancement: Add advanced features and CI/CD pipeline</li>
+                        <li>Podcast Growth: Feature industry leaders and thought leaders</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 7: Summer Excellence</div>
+                    <div class="phase-deadline">Deadline: 30 June 2027</div>
+                    <ul class="phase-goals">
+                        <li>Professional Experience: Excel in summer internship</li>
+                        <li>Content Acceleration: Scale vlog and personal brand content</li>
+                        <li>Business Automation: Partner with co-founder for scaling</li>
+                        <li>Fitness Consistency: Maintain muscle building and running routine</li>
+                        <li>Network Leverage: Utilize connections for growth opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 8: Content & Business Focus</div>
+                    <div class="phase-deadline">Deadline: 30 September 2027</div>
+                    <ul class="phase-goals">
+                        <li>Podcast Excellence: Create premium content with top-tier guests</li>
+                        <li>Team Building: Assemble core business team for bootstrap growth</li>
+                        <li>Physical Maintenance: Sustain peak fitness levels</li>
+                        <li>Academic Balance: Maintain strong academic performance</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 9: Career Breakthrough</div>
+                    <div class="phase-deadline">Deadline: 31 December 2027</div>
+                    <ul class="phase-goals">
+                        <li>Career Success: Secure ₹50+ LPA job offer</li>
+                        <li>Content Empire: Run successful podcast, vlog, and personal brand</li>
+                        <li>Physical Peak: Maintain elite fitness standards</li>
+                        <li>Business Automation: Achieve fully automated business operations</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 10: Campus Legacy</div>
+                    <div class="phase-deadline">Deadline: 31 March 2028</div>
+                    <ul class="phase-goals">
+                        <li>Academic Completion: Graduate with honors and memorable campus experience</li>
+                        <li>YouTube Milestone: Reach 500K+ subscribers</li>
+                        <li>Fitness Excellence: Maintain peak physical condition</li>
+                        <li>Revenue Target: Generate ₹5+ lakhs monthly business revenue</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-title">Phase 11: Legacy Achievement</div>
+                    <div class="phase-deadline">Deadline: 17 June 2028</div>
+                    <ul class="phase-goals">
+                        <li>Dream Journey: Experience Japan and its innovative culture</li>
+                        <li>Revenue Scaling: Achieve ₹10+ lakhs monthly revenue</li>
+                        <li>Career Launch: Begin high-impact professional role</li>
+                        <li>Lifestyle Excellence: Maintain peak physical and mental performance</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </div>
 
     <script>
+        // Particle animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Countdown functionality
         const targetDate = new Date('2028-06-17T00:00:00+05:30').getTime();
+        const startDate = new Date('2025-06-17T00:00:00+05:30').getTime(); // Assuming start date
         
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
+            const totalDistance = targetDate - startDate;
+            const elapsed = now - startDate;
 
             if (distance < 0) {
                 document.querySelector('.countdown-grid').innerHTML = 
-                    '<div class="col-span-full text-center"><p class="text-3xl font-bold text-[#ffd700]">🐍 Mamba Legacy Achieved!</p></div>';
+                    '<div class="col-span-full text-center"><p class="text-4xl font-bold text-[#ffd700]">🐍 Mamba Legacy Achieved!</p></div>';
                 return;
             }
 
@@ -194,10 +637,22 @@
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            // Update progress stats
+            const completedDays = Math.max(0, Math.floor(elapsed / (1000 * 60 * 60 * 24)));
+            const progressPercent = Math.min(100, Math.max(0, Math.floor((elapsed / totalDistance) * 100)));
+            
+            document.getElementById('completedDays').textContent = completedDays;
+            document.getElementById('progressPercent').textContent = progressPercent + '%';
+            document.getElementById('progressFill').style.width = progressPercent + '%';
         }
 
-        setInterval(updateCountdown, 1000);
-        document.addEventListener('DOMContentLoaded', updateCountdown);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
     </script>
 </body>
 </html>
